@@ -1,0 +1,35 @@
+# Packs: the parts of kit/ that agd installs, each with the packs it needs.
+# Each kit file is in exactly one pack. A path ending in / means every file under that folder.
+# Paths are relative to kit/. scripts/check.py checks this file.
+# pkm is installed once per machine; the working agreement names the pkm version the kit needs.
+
+min-agd 0.1.0
+
+pack core
+  AGENTS.md
+  CLAUDE.md
+  .claude/agents/retriever.md
+  .claude/agents/chief-of-staff.md
+  .claude/skills/vault-search/
+  .claude/skills/review/
+  .claude/skills/check-in/
+  .claude/skills/tasks/
+  .claude/skills/posting/
+  .claude/skills/pkms-init/
+
+pack coaching requires core
+  .claude/agents/coach.md
+  .claude/skills/coaching/
+
+pack projects requires core
+  .claude/skills/projects/
+
+pack writing requires core
+  .claude/agents/editor.md
+  .claude/skills/writing/
+
+pack ledger requires core
+  .claude/skills/ledger/
+
+pack study requires core
+  .claude/skills/study/

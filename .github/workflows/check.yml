@@ -1,0 +1,37 @@
+name: Check kit
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      # Run every OS to the end, so a failure on one doesn't hide the result of the other.
+      fail-fast: false
+      matrix:
+        # macOS checks the syntax of scripts/bump.sh with bash 3.2, the oldest bash it supports.
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      SCRIPTS_PKMS: ${{ github.workspace }}/scripts-pkms
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # Full history and tags, so check.py can compare kit/ with the last release tag.
+          fetch-depth: 0
+      - name: Install ripgrep and jq, which pkm expects
+        run: |
+          if [ "$RUNNER_OS" = Linux ]; then sudo apt-get update -q && sudo apt-get install -y -q ripgrep jq; else brew install ripgrep jq; fi
+      - name: Check out scripts-pkms, whose commands the kit calls
+        uses: actions/checkout@v5
+        with:
+          repository: Zejnilovic/scripts-pkms
+          path: scripts-pkms
+          # Not released yet: scripts-pkms has no v0.1.0 tag, so this takes its default branch. Once it is
+          # released, add `ref: v0.1.0` here (the pkm version the agreement requires) and in release.yml.
+      - name: Consistency checks
+        run: python3 scripts/check.py

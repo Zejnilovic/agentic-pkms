@@ -1,0 +1,55 @@
+---
+name: review
+description: Brings the owner a brief of what is new, important and needing attention, from pkm's digest, and runs the close with its do, date, answer and chase choices. Use only when the owner asks for the brief or the close.
+---
+
+<!-- From agentic-pkms. Kit updates replace this file except a "## This project" section at the end, which belongs to the vault. Edit nothing else. Vault rules go in AGENTS.md "This project". -->
+
+Needs pkm; see the agreement.
+
+# Brief and close
+
+Run this only when the owner asks, never on a schedule of its own. You report; the owner decides. Facts only: never a health label, a score or praise. Every line ends with its source.
+
+## The brief
+
+1. Run `pkm since last` and `pkm upcoming 7`. If `since last` prints "Nothing since", say so and stop.
+2. Read only that output. If something you need is missing, say so instead of searching.
+3. Write three lists, at most 5 lines each, in this format:
+
+   **New**
+   - Acme has a new contact, Marta Kovac, who has no note yet (daybook/2026/11/2026-11-10.md:11)
+
+   **Important**
+   - You marked it: Acme may cancel the contract if the demo slips again (daybook/2026/11/2026-11-10.md:9)
+
+   **Needs attention**
+   - Overdue since Friday: send John Roe the Apollo invoice (daybook/2026/11/2026-11-09.md:5)
+
+   New: entries and names that appeared since the last brief. Important: lines the owner marked with `!` or as `Decided:`. Needs attention: overdue or waiting tasks, open questions, and dates in `pkm upcoming 7`. Each line states what is there and why it may matter.
+
+4. Run `pkm evidence --verify -` on the draft. Drop every line without a source, or that the check rejects.
+5. Propose tasks for what needs doing, each quoting its line. Propose posts for marked entries not yet posted (`Decided:` and `!`), and hand them to the `posting` skill: "Shall I post …?". Add nothing without a yes.
+6. Print the brief. Run `pkm since --seen` only after the owner has seen it and said so.
+
+## The close
+
+Run this when the owner asks for a close. It follows the vault's close cycle; `pkm close --cycle <name>` picks another.
+
+1. Run `pkm close` and read its sections.
+2. **Tasks**: for each task in `== tasks` (overdue, or open 21 days or more), ask the owner: do, date, someday or drop.
+3. **Open items**: for each question and waiting task in `== open`, ask: answer, chase or drop.
+4. **Coming due**: list the routines, dated tasks, birthdays and target dates in `== due`, one line each with its source.
+5. **Posts**: list the marked entries in `== marked` as proposals, and hand them to the `posting` skill. Post nothing unapproved.
+6. **Quiet and names**: show `== quiet` (projects and people mentioned in the four weeks before the last two, and not since) and `== names` (names with no note), for the owner to decide.
+7. **Shared vault**: name each line's writer from its day page's name: `2026-11-12-sam.md` is sam's.
+8. **Quarter**: when `== ideas` appears, go through each idea and someday item: start, keep or drop.
+9. **Close page**: if the owner says yes, run `pkm new close`, write 3 to 5 lines, each with a source such as `[[2026-11-12]]`, then run `pkm evidence --verify`.
+
+Every action waits for the owner's yes, one answer per item.
+
+## Rules
+
+- Propose changes; make none without a yes.
+- Name what the owner said only in their own words, quoted and linked.
+- No advice unless asked. If something is not in the notes, say "unknown".

@@ -1,0 +1,9 @@
+# Files and folders pkm leaves out of the vault, in gitignore syntax: one pattern per line.
+# exports/      a folder, with everything in it
+# *.pdf         files by their name, in any folder
+# scans/*       everything in a folder, while still letting a ! line bring one file back
+# !scans/a.md   brings back a file that a pattern above left out (not inside a folder left out with folder/)
+# pkm reads only this file. .gitignore is not followed, so a folder kept out of git is still part of the vault.
+
+# This file is for people, not for pkm
+README.md
