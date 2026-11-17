@@ -2,11 +2,11 @@
 
 *What an AI agent adds to the Daybook Method, and the rules that keep it trustworthy and cheap.*
 
-The [Daybook Method](https://github.com/Zejnilovic/scripts-pkms/blob/master/docs/method.md) works by hand: you log on today's page, mark what needs something, post what matters to its note, and close the week. Its slow parts are reading and asking: going back over a week of pages, finding the entries worth posting, noticing what has gone quiet, checking what changed on the project's board, wondering whether what a note says is still true. An agent is good at exactly that. It works like a good secretary: it reads, keeps track, asks, and tells you what it sees, as long as it never takes over the parts that must stay yours.
+The [Daybook Method](https://github.com/Zejnilovic/scripts-pkms/blob/main/docs/method.md) works by hand: you log on today's page, mark what needs something, post what matters to its note, and close the week. Its slow parts are reading and asking: going back over a week of pages, finding the entries worth posting, noticing what has gone quiet, checking what changed on the project's board, wondering whether what a note says is still true. An agent is good at exactly that. It works like a good secretary: it reads, keeps track, asks, and tells you what it sees, as long as it never takes over the parts that must stay yours.
 
 > **You write and decide. pkm finds and copies. The agent reads, asks and drafts.**
 
-This document describes what agentic-pkms adds to each practice, what it makes possible that the method alone does not, and the rules it works under. The examples come from the same [made-up example vaults](https://github.com/Zejnilovic/scripts-pkms/blob/master/docs/examples/README.md) as the method: a work vault about the Apollo project, Acme, Jane Doe and John Roe, and a family vault shared by Alex and Sam.
+This document describes what agentic-pkms adds to each practice, what it makes possible that the method alone does not, and the rules it works under. The examples come from the same [made-up example vaults](https://github.com/Zejnilovic/scripts-pkms/blob/main/docs/examples/README.md) as the method: a work vault about the Apollo project, Acme, Jane Doe and John Roe, and a family vault shared by Alex and Sam.
 
 ## The method in brief
 
