@@ -73,7 +73,7 @@ It also makes four things possible that the method alone does not:
 
 ### Where the agent's own words appear
 
-Your entries are never rewritten. The agent writes in its own words only in places that link their source on every line: a project's Now section, `summary:` lines, briefs, rounds, close pages, agendas, updates and drafts. When you accept a task or a recall question it proposed, it goes on today's page: a task quotes your entry and links its day, or names an item in a tool and links it, and a question is in your wording, or in the agent's if you accept it as it is.
+Your entries are never rewritten. The agent writes in its own words only in places that link their source on every line: a project's Now section, `summary:` lines, briefs, rounds, close pages, agendas, updates and drafts. When you accept a task it proposed, it goes on today's page: it quotes your entry and links its day, or names an item in a tool and links it. A recall question you accept goes into its course note with `pkm recall add`, in your wording, or in the agent's if you accept it as it is.
 
 ## The flows
 
@@ -257,7 +257,7 @@ It can also be a thinking partner. Talk a decision through, and it asks question
 
 ### Drafting the close
 
-The agent prepares the close from `pkm close`: the cycle's entries, tasks overdue or open for three weeks, open questions and waiting tasks, what comes due before the next close, notes nobody mentioned for two weeks, and names that keep coming back without a note. It drafts a close page, every line linked to its day, and asks you about each open item. You decide; it records what you decided. Once a quarter, it also lists your ideas and someday items, for you to start, keep or drop.
+The agent prepares the close from `pkm close`: the cycle's entries, tasks overdue or open for three weeks, open questions and waiting tasks, what comes due before the next close, projects and people that have gone quiet for two weeks, and names that keep coming back without a note. It drafts a close page, every line linked to its day, and asks you about each open item. You decide; it records what you decided. Once a quarter, it also lists your ideas and someday items, for you to start, keep or drop.
 
 ```markdown
 # Week of 2026-11-09
@@ -378,7 +378,7 @@ sequenceDiagram
   Agent->>pkm: pkm recall with your answer
 ```
 
-The agent asks one question at a time and shows your own answer only after you've given yours. You say whether you knew it, and pkm moves the question up the ladder or back to one day. The agent quizzes only from your notes: if your note has no answer, it says so instead of teaching you something you never wrote down. It can propose new questions from what you studied, for you to accept, change or replace with your own.
+The agent asks one question at a time and shows your own answer only after you've given yours. You say whether you knew it, and pkm moves the question up the ladder or back to one day. The agent quizzes only from your notes: if your note has no answer, it says so instead of teaching you something you never wrote down. It can propose new questions from what you studied, for you to accept, change or replace with your own. An accepted question goes into the course note with `pkm recall add`, never onto a day page, because answering it moves its date, and a day page stays as you wrote it.
 
 ### Several vaults
 
@@ -451,6 +451,7 @@ No study has measured whether an agent makes a personal note system better kept 
 | `pkm close` | The material for the close |
 | `pkm evidence --verify <note>`, `pkm evidence --verify -` | Checks that every line of a summary, in a note or piped in, has a source, and that the source exists |
 | `pkm recall`, `pkm recall <path:line> yes\|no` | Questions due today; moves one up the ladder, or back to one day |
+| `pkm recall add <note> "<question>"` | Adds a recall question to a course note, with its answer below |
 | `pkm check`, `pkm check --urls` | Dead links, duplicate names, secrets; with `--urls`, also the web addresses that no longer answer |
 
 ## Setting it up
