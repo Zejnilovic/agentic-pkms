@@ -13,7 +13,7 @@ Ask one question at a time, with an example answer. Accept "skip". Show every li
 
 ## Steps
 
-1. **Check the tools.** Run `pkm version --require <x.y>` with the version the agreement names, then `pkm doctor`. If pkm is missing (exit 127) or too old (exit 1), stop and give the install line from scripts-pkms's README: `make install`. If doctor names a missing tool, stop and name it. Go on only when both pass.
+1. **Check the tools.** Run `pkm version --require <x.y>` with the version the agreement names, then `pkm doctor`. If pkm is missing (exit 127) or too old (exit 1), stop and give the install line: `brew install zejnilovic/tap/pkm`, or without Homebrew, `make install` in a clone of scripts-pkms (its README). If doctor names a missing tool, stop and name it. Go on only when both pass.
 2. **Ask which vaults.** "Which vaults do you want, for example work, personal or family? Give a name for each." For each name, ask where it lives: "Which folder is work in, for example `~/vaults/work`?"
 3. **For each vault, in order:**
    1. **Existing setup.** If the folder has `.pkm/`, say so, read `.pkm/config`, and offer only the missing settings. Never work around `pkm init`.

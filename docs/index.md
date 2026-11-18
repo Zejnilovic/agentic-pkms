@@ -11,7 +11,7 @@ hide:
 
 The kit is a set of instructions, skills and agents copied into your vault. It is written for Claude Code, its working agreement is a plain `AGENTS.md` that other assistants read too, and it needs [pkm](https://zejnilovic.github.io/scripts-pkms/), installed once per machine.
 
-1. **Install pkm.** It needs bash, [ripgrep](https://github.com/BurntSushi/ripgrep) and [jq](https://jqlang.org). From a clone of [scripts-pkms](https://github.com/Zejnilovic/scripts-pkms), run `make install`, then `pkm doctor`. Exit 0 means it is ready.
+1. **Install pkm:** `brew install zejnilovic/tap/pkm`, which brings ripgrep, jq and tab completion. Without Homebrew, see [pkm's install](https://github.com/Zejnilovic/scripts-pkms#install). Then run `pkm doctor`. Exit 0 means it is ready.
 2. **Make a vault and install the kit** with [agd](https://zejnilovic.github.io/agd/). Git is recommended, so every change an agent makes is a diff you can review.
 
     ```bash

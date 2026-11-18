@@ -4,7 +4,7 @@ An AI agent for a personal knowledge vault: plain Markdown that you write and de
 
 ## Start
 
-1. **Install pkm once per machine.** It needs bash, [ripgrep](https://github.com/BurntSushi/ripgrep) and [jq](https://jqlang.org). From a clone of [scripts-pkms](https://github.com/Zejnilovic/scripts-pkms), run `make install`; or unpack its release tarball and run `sh install.sh`. Then run `pkm doctor`. Exit 0 means it is ready.
+1. **Install pkm once per machine:** `brew install zejnilovic/tap/pkm`, which brings ripgrep, jq and tab completion. Without Homebrew, see [scripts-pkms](https://github.com/Zejnilovic/scripts-pkms#install). Then run `pkm doctor`. Exit 0 means it is ready.
 2. **Make a vault** in a new folder, then install the kit. Git is recommended, so every change an agent makes is a diff you can review.
 
    ```bash

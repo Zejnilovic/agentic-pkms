@@ -28,7 +28,7 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 ## Using pkm
 
 - Run `pkm version --require 0.1` once per conversation.
-- Exit 127: pkm is not installed. Exit 1: it is too old. Say so, give the install (`git clone https://github.com/Zejnilovic/scripts-pkms`, then `make install` in it; needs ripgrep and jq), offer drafts only, and stop vault work.
+- Exit 127: pkm is not installed. Exit 1: it is too old. Say so, give the install (`brew install zejnilovic/tap/pkm`; without Homebrew, scripts-pkms's README), offer drafts only, and stop vault work.
 - Use pkm for everything in the vault; never write your own shell commands for notes. Run `pkm check` after changes.
 
 ## Layout and conventions
