@@ -31,6 +31,7 @@ The rules of agentic-defaults apply: numbered steps, an explicit output format a
 ## Content rules
 
 - [docs/methodology.md](docs/methodology.md) is the why, written for people. Keep the kit and it consistent, and update its last table when kit files are added or renamed.
+- **The site** is built from `docs/` by `mkdocs.yml` and the Docs workflow, and published to GitHub Pages. It shares its look (`docs/stylesheets/daybook.css`) and `scripts/site_hooks.py` with the scripts-pkms site; keep those files the same in both. The home page is `docs/overrides/home.html`: when the kit's rules or flows change, check that it still quotes them. Preview with `pip install -r docs/requirements.txt` and `mkdocs serve`.
 - **The vault is the owner's.** The kit's rules protect the owner's words (agents capture and organize; they rewrite only when asked), never delete, and never invent. Keep every new skill and agent inside those rules.
 - **Scripts move the owner's words; agents decide where.** Anything that files text works like `pkm post`: the agent proposes, the owner approves, the script copies, and a check proves nothing was lost.
 - **Evidence on every summary.** Anything an agent summarizes links its source on every line, and the skill runs `pkm evidence` on it. A day page is never rewritten, so the source survives.

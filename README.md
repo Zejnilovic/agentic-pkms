@@ -1,6 +1,6 @@
 # agentic-pkms
 
-An AI agent for a personal knowledge vault: plain Markdown that you write and decide on. [pkm](https://github.com/Zejnilovic/scripts-pkms) finds and copies; the agent reads, asks and drafts. This kit gives it the rules, skills and agents. [Working with a knowledge agent](docs/methodology.md) explains why.
+An AI agent for a personal knowledge vault: plain Markdown that you write and decide on. [pkm](https://github.com/Zejnilovic/scripts-pkms) finds and copies; the agent reads, asks and drafts. This kit gives it the rules, skills and agents. [Working with a knowledge agent](docs/methodology.md) explains why, and [the agentic Daybook site](https://zejnilovic.github.io/agentic-pkms/) shows it.
 
 ## Start
 

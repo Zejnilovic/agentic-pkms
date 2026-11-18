@@ -1,3 +1,6 @@
 # Generated files
 __pycache__/
 .DS_Store
+
+# The documentation site, built by mkdocs
+site/

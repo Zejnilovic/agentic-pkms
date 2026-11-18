@@ -1,0 +1,173 @@
+{% extends "main.html" %}
+
+{% block tabs %}{% endblock %}
+
+{% block hero %}
+<div class="db-home">
+
+  <!-- 1. The promise, and a brief written in pencil -->
+  <section class="db-hero">
+    <div class="db-wrap db-hero__grid">
+      <div class="db-hero__text">
+        <p class="db-kicker">An AI agent for a Daybook vault</p>
+        <h1 class="db-hero__title">It writes in pencil.<br><em>You decide what goes in ink.</em></h1>
+        <p class="db-lede">
+          The agent reads your week, asks, and drafts the brief, the posting and the close. Every line it writes links its
+          source, which pkm checks before you see it. It never rewrites your words, deletes, or sends anything in your name.
+        </p>
+        <div class="db-actions">
+          <a class="db-button db-button--ink" href="#set-it-up">Set it up <span aria-hidden="true">→</span></a>
+          <a class="db-button" href="{{ 'methodology/' | url }}">How it works</a>
+        </div>
+        <p class="db-hero__fine">For people who already keep, or want to keep, a <a href="https://zejnilovic.github.io/scripts-pkms/">Daybook</a>. The method works without an agent.</p>
+      </div>
+
+      <figure class="db-brief" aria-label="An excerpt of a brief the agent drafts from the example work vault">
+        <figcaption class="db-page__file">the brief, Monday 2026-11-16 · printed, not saved</figcaption>
+        <div class="db-brief__sheet">
+          <p class="db-brief__head" style="--i:0">Important</p>
+          <p class="db-pencil" style="--i:1">You marked it: Acme may cancel the contract if the demo slips again; the demo is on 2026-11-20 <span class="db-src">2026-11-10.md:9</span> <span class="db-src">2026-11-09.md:10</span></p>
+          <p class="db-brief__head" style="--i:2">Needs attention</p>
+          <p class="db-pencil" style="--i:3">Overdue since Friday: send John Roe the Apollo invoice for October <span class="db-src">2026-11-09.md:5</span></p>
+          <p class="db-pencil" style="--i:4">Still open: move the demo to a Tuesday? <span class="db-src">2026-11-12.md:9</span></p>
+          <p class="db-pencil db-pencil--q" style="--i:5">Shall I post Tuesday's decision and risk to Apollo, and make a note for Marta Kovac?</p>
+          <p class="db-verified" style="--i:6"><code>pkm evidence --verify</code> every source exists</p>
+          <p class="db-ink-reply" style="--i:7">yes to both</p>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2. Three roles -->
+  <section class="db-section" aria-labelledby="db-roles-title">
+    <div class="db-wrap">
+      <p class="db-kicker">Who does what</p>
+      <h2 id="db-roles-title" class="db-h2">You write and decide.<br>pkm finds and copies.<br>The agent reads, asks and drafts.</h2>
+      <div class="db-roles">
+        <div class="db-role db-role--you db-reveal">
+          <span class="db-role__who">You</span>
+          <p class="db-role__how">in ink</p>
+          <ul><li>write entries and marks</li><li>decide what to post, close and send</li></ul>
+          <p class="db-role__why">The words are yours, and what to decide about your own work and life is a judgment only you can make.</p>
+        </div>
+        <div class="db-role db-role--pkm db-reveal">
+          <span class="db-role__who">pkm</span>
+          <p class="db-role__how">stamped, exact</p>
+          <ul><li>finds lines by name, link and words</li><li>copies entries word for word</li><li>checks every source and link</li></ul>
+          <p class="db-role__why">Both must be exact, and a tool does the same thing every time.</p>
+        </div>
+        <div class="db-role db-role--agent db-reveal">
+          <span class="db-role__who">The agent</span>
+          <p class="db-role__how">in pencil</p>
+          <ul><li>reads only the lines pkm found</li><li>notices what matters and raises issues</li><li>asks, proposes and drafts, then stops</li></ul>
+          <p class="db-role__why">It can go over a week of entries and notice a promise made in passing, or a name that keeps coming back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Posting, by number -->
+  <section class="db-section db-week" aria-labelledby="db-posting-title">
+    <div class="db-wrap db-split">
+      <div>
+        <p class="db-kicker">Posting, the way it is done</p>
+        <h2 id="db-posting-title" class="db-h2">It proposes. You answer by number. pkm copies.</h2>
+        <p class="db-intro">The agent never types your entries into a note, so they cannot change on the way. pkm refuses to post an entry twice, so asking again does no harm.</p>
+      </div>
+      <div class="db-exchange db-reveal">
+        <div class="db-card db-card--pencil"><span class="db-card__file">the agent proposes · from Tuesday's call</span>
+          <code class="db-entry"><span class="db-num">1</span> "! They may cancel the contract if the demo slips again": Risks in <span class="db-wl">[[apollo]]</span></code>
+          <code class="db-entry"><span class="db-num">2</span> "Decided: we cut the mobile app from the first release": Decisions in <span class="db-wl">[[apollo]]</span></code>
+          <code class="db-entry"><span class="db-num">3</span> "Their new contact is Marta Kovac": a new note, marta-kovac</code>
+          <code class="db-entry"><span class="db-num">4</span> "I'll send them the revised timeline by Thursday": nothing, you sent it on Thursday</code>
+          <code class="db-entry db-entry--q">Question for 3: who is Marta Kovac at Acme?</code>
+        </div>
+        <p class="db-ink-reply db-ink-reply--block">1, 2 and 3 yes. Marta Kovac is Acme's project lead.</p>
+        <div class="db-card db-card--console"><span class="db-card__file">pkm copies</span>
+          <code class="db-entry"><span class="db-prompt">$</span> pkm post daybook/2026/11/2026-11-10.md:9 apollo#Risks</code>
+          <code class="db-entry db-entry--out">notes/apollo.md:31</code>
+          <code class="db-entry"><span class="db-prompt">$</span> pkm post daybook/2026/11/2026-11-10.md:10 apollo#Decisions</code>
+          <code class="db-entry db-entry--out">notes/apollo.md:35</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. What it does -->
+  <section class="db-section" aria-labelledby="db-does-title">
+    <div class="db-wrap">
+      <p class="db-kicker">On request, never on its own</p>
+      <h2 id="db-does-title" class="db-h2">What you can ask it for.</h2>
+      <dl class="db-glossary db-glossary--does">
+        <div class="db-reveal"><dt>Brief</dt><dd>What is new, important and needs you, from what you wrote since the last brief.</dd></div>
+        <div class="db-reveal"><dt>Posting</dt><dd>A numbered proposal of what goes where; you answer by number; pkm copies it word for word.</dd></div>
+        <div class="db-reveal"><dt>Close</dt><dd>It asks about each open task and question, and records what you decide.</dd></div>
+        <div class="db-reveal"><dt>Check-in</dt><dd>At most five questions about whether your notes are still true, answered in a word.</dd></div>
+        <div class="db-reveal"><dt>Rounds</dt><dd>What changed for you on the boards and code your projects link to. Read only.</dd></div>
+        <div class="db-reveal"><dt>Recall</dt><dd>Your own questions, asked back on a schedule. The study pack proposes new ones from a course.</dd></div>
+        <div class="db-reveal"><dt>Find</dt><dd>An answer from your notes with its sources, or "not found".</dd></div>
+        <div class="db-reveal"><dt>Preparation</dt><dd>A draft agenda for a 1:1, or an update on a project, every point sourced. Drafts only.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 5. Trust -->
+  <section class="db-section db-evidence" aria-labelledby="db-trust-title">
+    <div class="db-wrap db-evidence__grid">
+      <div>
+        <p class="db-kicker">Why you can trust it</p>
+        <h2 id="db-trust-title" class="db-h2">It doesn't assume the model is right.<br>It makes its work checkable.</h2>
+        <p class="db-intro">Each way a language model is known to fail has a guard, and most of the guards are pkm, not the model.</p>
+        <a class="db-button" href="{{ 'methodology/' | url }}#the-rules">The nine rules</a>
+      </div>
+      <table class="db-strength db-guards">
+        <thead><tr><th scope="col">Failure</th><th scope="col">Guard</th></tr></thead>
+        <tbody>
+          <tr><td>An invented fact, date or quote</td><td>Every claim needs a source, <code>pkm evidence --verify</code> checks it exists, and "unknown" is allowed</td></tr>
+          <tr><td>Your words drifting as they are posted</td><td>pkm copies each entry character for character</td></tr>
+          <tr><td>Too much posted, or the wrong thing</td><td>A numbered proposal; nothing is posted without your yes</td></tr>
+          <tr><td>A label that hides the facts</td><td>Issues as facts with sources, never a health colour or a score</td></tr>
+          <tr><td>An instruction hidden in an email or a ticket</td><td>Text is data; the searching agent can only read</td></tr>
+          <tr><td>Private notes reaching the model</td><td>Folders you name as off limits are never read</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6. Cost and limits -->
+  <section class="db-section db-fit" aria-labelledby="db-limits-title">
+    <div class="db-wrap db-fit__grid">
+      <div>
+        <p class="db-kicker">Cheap, and honest about it</p>
+        <h2 id="db-limits-title" class="db-h2">It reads little.<br>It can still be wrong.</h2>
+      </div>
+      <div class="db-fit__cols">
+        <div class="db-reveal">
+          <h3>Why it stays cheap</h3>
+          <ul>
+            <li>It never reads the vault to answer: one-line summaries first, then the few lines pkm finds.</li>
+            <li>A fixed reading budget. When it runs out, it says what it didn't search, and asks.</li>
+            <li>pkm is a command line, not a server of tools: a command named in a skill costs one line.</li>
+          </ul>
+        </div>
+        <div class="db-reveal">
+          <h3>What it does not establish</h3>
+          <ul>
+            <li>No study has measured whether an agent makes a note system better kept or more used.</li>
+            <li>The brief can miss something that matters and stress something that doesn't. It is a reading, not a verdict.</li>
+            <li>An agent costs money, and you send its provider what it reads.</li>
+          </ul>
+        </div>
+        <p class="db-fit__cost"><span class="db-hand">so</span> The method works without one. Add the agent when the reading it saves you is worth more than that.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="db-home-content">
+    {{ page.content }}
+  </div>
+{% endblock %}
