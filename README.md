@@ -18,7 +18,6 @@ An AI agent for a personal knowledge vault: plain Markdown that you write and de
 4. **Describe the vault.** Fill in "This project" at the end of `AGENTS.md`: who keeps the vault, the languages you write in, and any folder agents must not read.
 5. **Capture and find.** Write an entry with `pkm add "Called Jane Doe about the offer"`, and search with `pkm find offer`. Or just ask the agent: "remember that Jane Doe called".
 
-   `agd init` installs the kit from its first release (0.1.0), so it needs that release to be out; until then, copy the kit from this repository.
 
 ## What the agent does
 

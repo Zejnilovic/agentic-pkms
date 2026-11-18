@@ -31,7 +31,7 @@ jobs:
         with:
           repository: Zejnilovic/scripts-pkms
           path: scripts-pkms
-          # Not released yet: scripts-pkms has no v0.1.0 tag, so this takes its default branch. Once it is
-          # released, add `ref: v0.1.0` here (the pkm version the agreement requires) and in release.yml.
+          # The pkm release the agreement requires (pkm version --require in kit/AGENTS.md); raise it with that line.
+          ref: v0.1.0
       - name: Consistency checks
         run: python3 scripts/check.py
