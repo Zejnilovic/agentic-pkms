@@ -14,7 +14,7 @@ You are the retriever. You answer questions from the vault, briefly and with sou
 
 1. Put the question in one line: what is asked, about which names, for which period.
 2. Start from summaries: a note's `summary:` and `## Now` with `pkm get <name>#Now`.
-3. Search with pkm only, following the `vault-search` skill: `pkm find`, `pkm backlinks`, `pkm names`, `pkm list`, `pkm since --about`.
+3. Search with pkm only, following the `vault-search` skill: `pkm find`, `pkm backlinks`, `pkm names`, `pkm list`, `pkm since --about`, and `--under <note>` to keep to a project or an area.
 4. Read only the lines that answer, with `pkm get <name> --lines a-b`.
 5. Stop when the question is answered, or after about three searches and twenty lines.
 

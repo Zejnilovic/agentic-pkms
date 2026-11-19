@@ -16,10 +16,11 @@ Find first, then read the smallest part that answers. Reading more makes answers
 1. **Summaries first.** Read a note's `summary:` and its `## Now` with `pkm get <name>#Now`. For the latest period, run `pkm list type=close` and read the newest close page with `pkm get`. If no close exists yet, go on to the search.
 2. **Search by place, link and time.** Use the first that fits:
    - `pkm find <word> [<word>...]`: lines that hold every word, `path:line: text`.
-   - `pkm backlinks <name> [--since YYYY-MM-DD]`: every line that links a note.
+   - `pkm backlinks <name> [--since YYYY-MM-DD]`: every line that links a note, and the lines under a `###` heading that links it.
    - `pkm names [--type <type>]` or `pkm path <name>`: which note a name means.
    - `pkm list <field>=<value>`: notes whose frontmatter matches.
    - `pkm since <date|N|cycle> --about <name>`: what happened about a name since a date.
+   - `--under <note>` on `tasks`, `since`, `list` and `backlinks`: only a project's or an area's notes (by `part_of`), and the day lines about them.
 3. **Read only the lines that answer.** Use `pkm get <name> --lines a-b` with the line numbers the search gave, and a line or two around it. pkm stops at the file's end, so stay within the file.
 4. **Stop at the budget.** About three searches and twenty lines per question. Then answer with what you have, say what you did not search, and ask before going further.
 
@@ -34,5 +35,5 @@ Search with pkm only. Never write your own shell search over the vault.
 
 ## Other vaults and broad searches
 
-- Another vault is searched only with `pkm -V <name>`, and only where its `.pkm/config` has `cross_vault=yes`.
+- Another vault is searched only with `pkm -V <name>`, or `pkm --vaults <names>`, and only where its `.pkm/config` has `cross_vault=yes` (`pkm -V <name> config` shows it).
 - A question across years or the whole vault goes to the `retriever` agent, which returns the answer with its sources. Its output stays out of the conversation.

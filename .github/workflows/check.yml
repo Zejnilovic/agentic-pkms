@@ -32,6 +32,6 @@ jobs:
           repository: Zejnilovic/scripts-pkms
           path: scripts-pkms
           # The pkm release the agreement requires (pkm version --require in kit/AGENTS.md); raise it with that line.
-          ref: v0.3.0
+          ref: v0.5.0
       - name: Consistency checks
         run: python3 scripts/check.py

@@ -36,7 +36,7 @@ Run them when the owner asks. They cover the active projects since the last clos
 
 ## Updates and cycle summaries
 
-1. Run `pkm since <cycle> --about <name>` for the entries, and do the rounds for the same period.
+1. Run `pkm since <cycle> --under <name>` for the entries about the project and the notes under it, and do the rounds for the same period.
 2. Draft the update or summary: one line per fact, each linking its entry (`[[2026-11-10]]`) or its address.
 3. Run `pkm evidence --verify -` on the draft, and drop any line that fails it.
 4. The owner edits the draft and sends it. You never send.
@@ -44,6 +44,10 @@ Run them when the owner asks. They cover the active projects since the last clos
 ## Tool changes
 
 Changing a tool, such as moving a work item to Active, is shown as the exact command, for example `az boards work-item update --id 318 --state Active`. Run it only after a yes for that one change.
+
+## Tasks of a project or an area
+
+Run `pkm tasks --under <name>`: the tasks of the note, of every note under it by `part_of`, and of the day lines about one of them.
 
 ## Portfolio
 
@@ -53,4 +57,4 @@ Run `pkm list type=project status=active`. Give one line per project: its name, 
 
 - Nothing from a tool is copied into the vault. An accepted task names the item and links its address.
 - `== quiet` in `pkm close` lists projects and people mentioned in the four weeks before the last two, and not since.
-- A status report is drafted from Now, Risks and Decisions, at most 15 lines, with a link on every line. The owner sends it.
+- A status report is drafted from Now, Risks and Decisions, at most 15 lines, with a link on every line. The owner sends it. To paste a section as it is for someone outside the vault, `pkm get <name>#<section> --plain` gives it without links, sources or markers.

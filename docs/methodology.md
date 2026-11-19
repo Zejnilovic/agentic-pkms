@@ -257,7 +257,7 @@ It can also be a thinking partner. Talk a decision through, and it asks question
 
 ### Drafting the close
 
-The agent prepares the close from `pkm close`: the cycle's entries, tasks overdue or open for three weeks, open questions and waiting tasks, what comes due before the next close, projects and people that have gone quiet for two weeks, and names that keep coming back without a note. It drafts a close page, every line linked to its day, and asks you about each open item. You decide; it records what you decided. Once a quarter, it also lists your ideas and someday items, for you to start, keep or drop.
+The agent prepares the close from `pkm close`: the cycle's entries, tasks overdue or open for three weeks, open questions and waiting tasks, the tasks and questions that are someone else's move, by person, what comes due before the next close, projects and people that have gone quiet for two weeks, and names that keep coming back without a note. It drafts a close page, every line linked to its day, and asks you about each open item. You decide; it records what you decided. Once a quarter, it also lists your ideas and someday items, for you to start, keep or drop.
 
 ```markdown
 # Week of 2026-11-09
@@ -278,6 +278,7 @@ And in the family vault, where it reads both parents' pages and says whose each 
 > - Alex: return Mia's trip form, due 2026-11-13: do, date, someday or drop? (daybook/2026/11/2026-11-09-alex.md:5)
 > - Sam: car or train for the summer?: answer, chase or drop? (daybook/2026/11/2026-11-10-sam.md:13)
 > - Coming due: renew the car insurance on 2026-11-20 (notes/routines.md:9), which Alex marked to compare first (daybook/2026/11/2026-11-14-alex.md:8)
+> - For Sam: book the boiler service, due 2026-11-27: chase, date or drop? (daybook/2026/11/2026-11-14-alex.md:11)
 
 ### Rounds (projects pack)
 
@@ -382,7 +383,7 @@ The agent asks one question at a time and shows your own answer only after you'v
 
 ### Several vaults
 
-The agent works in one vault at a time and writes only there. It never copies anything from one vault into another. For a brief across vaults, it reads another vault only if that vault allows it, with `cross_vault=yes` in its `.pkm/config`. Leave that off for a work vault unless your employer allows its notes in the AI service you use.
+The agent works in one vault at a time and writes only there. It never copies anything from one vault into another. For a brief across vaults, it reads another vault only if that vault allows it, with `cross_vault=yes` in its `.pkm/config`, and `pkm --vaults` keeps each vault's lines in a section of its own. Leave that off for a work vault unless your employer allows its notes in the AI service you use.
 
 ## The rules
 
@@ -437,11 +438,14 @@ No study has measured whether an agent makes a personal note system better kept 
 |---|---|
 | `pkm add <text>` | Logs an entry on today's page |
 | `pkm -V <vault> <command>` | Runs a command in another of your vaults |
+| `pkm --vaults <a,b> tasks\|upcoming\|since` | Runs it in each vault, each under its own heading |
 | `pkm find <words>`, `pkm backlinks <name>` | Finds lines by words, or every line that links a note |
-| `pkm get <name>#<section>` | Reads one section of a note |
+| `pkm get <name>#<section>` | Reads one section of a note; `--plain` gives it to paste for someone outside the vault |
 | `pkm list type=<type>` | Lists notes of a kind |
 | `pkm links --external [<note>]` | Lists the links to the outside, such as boards and code |
 | `pkm tasks`, `pkm done <words>` | Lists open tasks; ticks one, or moves a routine on |
+| `pkm tasks --for <who>`, `pkm tasks --under <note>` | Someone's tasks and questions; the tasks of a project or an area and the notes in it |
+| `pkm moved <path:line> <when>` | A task or an event whose date changed: struck, and written again with the new date |
 | `pkm new <type> <title>` | Makes a note from its template |
 | `pkm post <path:line> <note>#<section>` | Copies an entry into a note, word for word, with its day |
 | `pkm strike <path:line>` | Strikes a line that is no longer true, linked to today |

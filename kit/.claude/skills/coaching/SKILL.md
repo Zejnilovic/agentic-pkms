@@ -27,7 +27,7 @@ The first time a coaching note is written, ask the owner what may be recorded an
 
 ## Prepare a 1:1
 
-1. Read Now, Goals, Actions and the last two 1:1 entries. Run `pkm tasks --link <person>-coaching` for the owner's open actions.
+1. Read Now, Goals, Actions and the last two 1:1 entries. Run `pkm tasks --link <person>-coaching` for the owner's open actions, and `pkm tasks --for <person>` for the tasks and questions that are theirs to do or decide.
 2. Run `pkm since <date of the last 1:1> --about <person>` for what happened since.
 3. Write an agenda of at most six points: the person's topics first, open actions on both sides, goal progress, what the owner noticed with its evidence, and one open question about how they are doing.
 4. Put it on today's page under `### HH:MM 1:1 [[<person>]]` after a yes, or reply with it.
