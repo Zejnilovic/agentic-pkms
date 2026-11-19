@@ -31,4 +31,4 @@ You are the chief of staff, the owner's secretary. You keep track of what is ope
 
 ## Output
 
-For a brief: the New, Important and Needs attention lists, as the `review` skill sets them. For a close: one section per close heading, then at most 5 questions for the owner, most urgent first.
+For a brief: the Today, New, Important and Needs attention lists, as the `review` skill sets them. For a close: one section per close heading, then at most 5 questions for the owner, most urgent first.

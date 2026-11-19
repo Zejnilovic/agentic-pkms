@@ -23,7 +23,7 @@ You propose; the owner answers by number; pkm copies. Entries reach notes only t
    Quote each entry as the owner wrote it. Give a reason for every "nothing". Put questions last, one per line, as `Question for 2: who is Marta Kovac at Acme?`. Propose at most 10 entries at a time.
 3. **Stop and wait** for the owner's answers by number. Post nothing for a number that is not answered.
 4. **Log the answers that add a fact** on today's page with `pkm add`, in the owner's words, with links added and nothing else changed: `pkm add "[[marta-kovac|Marta Kovac]] is [[acme|Acme]]'s project lead"`. Never log a bare answer such as "1 yes".
-5. **File each entry.** Create each new note with `pkm new <type> "<title>"`, then post each entry once: `pkm post <path:line> <note>#<Section>`. pkm refuses an open task or a heading as the source, a day page or a close page as the target, and a repeat (exit 1, with the existing `path:line`). A refusal is an answer, not a failure to work around.
+5. **File each entry.** Create each new note with `pkm new <type> "<title>"`, then post each entry once: `pkm post <path:line> <note>#<Section>`. pkm refuses an open task, an event or a heading as the source, a day page or a close page as the target, and a repeat (exit 1, with the existing `path:line`). A refusal is an answer, not a failure to work around.
 6. **Update `## Now`** when a numbered proposal says so. It is its own line in the list. After a yes, edit the Now section directly, in your own words, with a source on every line such as `([[2026-11-10]])`. Then run `pkm evidence --verify <note>`.
 7. **Run `pkm check`.** Fix what you caused; report the rest.
 8. **Report** each change, note by note: the lines posted, the new notes, the `## Now` lines changed.

@@ -23,13 +23,22 @@ Put markers at the end of the task line, in parentheses.
 | `(start 2026-11-15)` | Hidden until that day |
 | `(someday)` | Not committed to; shown only by `pkm tasks someday` |
 | `(every 1m)` or `(every <cycle>)` | A routine. It lives in the `routines` note and moves on when done |
+| `(at 2026-11-20 14:00-15:00)` or `(@ …)` | A time. On a task, it is due that day unless it has a `(due …)` |
+
+## Events
+
+An event is a line without a box that ends with `(at <when>)` or `(@ <when>)`: `- Parents' evening (at 2026-11-19 17:30-19:00)`. `<when>` is a date, a date and `HH:MM`, a date and `HH:MM-HH:MM`, or `<date> to <date>`; on a day page the date may be relative. An event is never a task and never overdue; `pkm upcoming` lists it on its days. Write one only for what no calendar holds already, and give it a box only when there is something to do.
+
+- **Comes back**: in a note, add `(every 1w)` and, when needed, `(until <date>)` and `(skip <date>)`.
+- **Changes**: never edit the time. Propose `pkm strike <path:line>`, then the event written again with its new time, after a yes.
+- **Stays put**: `pkm post` refuses an event, as it refuses an open task.
 
 ## Commands
 
 - `pkm todo <text> [--due <day>] [--high | --low] [--waiting | --someday | --start <day> | --every <N>d|w|m|y or cycle]`: adds a task for today. `--every` writes to the `routines` note.
 - `pkm done <words | path:line> [--drop]`: marks the one open task that matches as done, or as dropped with `--drop`. A routine moves on by its interval or cycle.
 - `pkm tasks [open | waiting | someday | done [YYYY-MM-DD]] [--link <name>] [--stale <days>] [--all]`: open tasks in groups: overdue, due soon, waiting, the rest.
-- `pkm upcoming [<days>]`: due tasks, routines, birthdays and target dates ahead.
+- `pkm upcoming [<days>]`: due tasks, routines, events, birthdays and target dates ahead. `pkm upcoming --ics > daybook.ics` writes the events, tasks with a time and birthdays as a calendar file, only when the owner asks for one.
 
 A day is `YYYY-MM-DD`, `today`, `tomorrow`, `+3d`, `+2w` or a weekday name.
 

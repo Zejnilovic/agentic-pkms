@@ -17,7 +17,7 @@ A check-in is the agent asking rather than telling. Run it only when the owner a
    - `pkm list type=project status=active` for the active projects.
    - Each project's `## Now`, with `pkm get <name>#Now`.
    - `pkm tasks waiting` for open waits.
-   - `pkm upcoming 14` for dates in the next two weeks.
+   - `pkm upcoming 14` for dates and events in the next two weeks.
 2. **Ask at most five questions, one at a time, most useful first.** Each quotes its source line and asks whether it is still true, for example: "Is the demo still on 2026-11-20? (notes/apollo.md:13)". Accept a one-word answer.
 3. **For each answer, propose the exact change and wait for a yes.** Use one of:
    - an entry on today's page, `pkm add "<text>"`, in the owner's words;

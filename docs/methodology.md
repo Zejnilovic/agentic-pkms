@@ -87,7 +87,7 @@ sequenceDiagram
   You->>Agent: What's new? What needs me?
   Agent->>pkm: pkm since last, pkm upcoming 7
   pkm-->>Agent: the digest, every line with its place
-  Agent->>Agent: sort into New, Important and Needs attention
+  Agent->>Agent: sort into Today, New, Important and Needs attention
   Agent->>pkm: pkm evidence --verify
   pkm-->>Agent: every source exists
   Agent-->>You: the brief, and what it proposes
@@ -95,7 +95,7 @@ sequenceDiagram
   Agent->>pkm: pkm since --seen
 ```
 
-What you write drives the brief, not only your tasks. `pkm since last` collects, without judging, everything since the previous brief: the entries you logged, tasks that are overdue or waiting, marked entries, and the names you mentioned, with how often. `pkm upcoming 7` adds the dates of the coming week, such as birthdays and routines. A routine you haven't done stays in the digest until you do it. An excerpt from the work vault, where "…" marks lines left out:
+What you write drives the brief, not only your tasks. `pkm since last` collects, without judging, everything since the previous brief: the entries you logged, tasks that are overdue or waiting, marked entries, and the names you mentioned, with how often. `pkm upcoming 7` adds the dates of the coming week, such as birthdays, routines and events; today's events open the brief. A routine you haven't done stays in the digest until you do it. An excerpt from the work vault, where "…" marks lines left out:
 
 ```text
 == log
@@ -447,7 +447,7 @@ No study has measured whether an agent makes a personal note system better kept 
 | `pkm strike <path:line>` | Strikes a line that is no longer true, linked to today |
 | `pkm since last`, `pkm since --seen` | The digest behind the brief; marks it seen |
 | `pkm since <cycle> --about <name>` | What happened about a note since a cycle began |
-| `pkm upcoming 7` | Dates in the coming week, routines included |
+| `pkm upcoming 7` | Dates and events in the coming week, routines included |
 | `pkm close` | The material for the close |
 | `pkm evidence --verify <note>`, `pkm evidence --verify -` | Checks that every line of a summary, in a note or piped in, has a source, and that the source exists |
 | `pkm recall`, `pkm recall <path:line> yes\|no` | Questions due today; moves one up the ladder, or back to one day |

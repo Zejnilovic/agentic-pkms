@@ -13,9 +13,12 @@ Run this only when the owner asks, never on a schedule of its own. You report; t
 
 ## The brief
 
-1. Run `pkm since last` and `pkm upcoming 7`. If `since last` prints "Nothing since", say so and stop.
+1. Run `pkm since last` and `pkm upcoming 7`. If `since last` prints "Nothing since", say so, give only the Today list, and stop.
 2. Read only that output. If something you need is missing, say so instead of searching.
-3. Write three lists, at most 5 lines each, in this format:
+3. Write four lists, at most 5 lines each, in this format. Leave out Today when nothing happens today:
+
+   **Today**
+   - 17:30 parents' evening at the school (daybook/2026/11/2026-11-14-alex.md:9)
 
    **New**
    - Acme has a new contact, Marta Kovac, who has no note yet (daybook/2026/11/2026-11-10.md:11)
@@ -26,7 +29,7 @@ Run this only when the owner asks, never on a schedule of its own. You report; t
    **Needs attention**
    - Overdue since Friday: send John Roe the Apollo invoice (daybook/2026/11/2026-11-09.md:5)
 
-   New: entries and names that appeared since the last brief. Important: lines the owner marked with `!` or as `Decided:`. Needs attention: overdue or waiting tasks, open questions, and dates in `pkm upcoming 7`. Each line states what is there and why it may matter.
+   Today: the `event` lines dated today in `pkm upcoming 7`, in its order, each with its time as written. Events can't be overdue, so a past one is never raised. New: entries and names that appeared since the last brief. Important: lines the owner marked with `!` or as `Decided:`. Needs attention: overdue or waiting tasks, open questions, and the dates and events of the coming days in `pkm upcoming 7`. Each line states what is there and why it may matter.
 
 4. Run `pkm evidence --verify -` on the draft. Drop every line without a source, or that the check rejects.
 5. Propose tasks for what needs doing, each quoting its line. Propose posts for marked entries not yet posted (`Decided:` and `!`), and hand them to the `posting` skill: "Shall I post …?". Add nothing without a yes.
@@ -39,7 +42,7 @@ Run this when the owner asks for a close. It follows the vault's close cycle; `p
 1. Run `pkm close` and read its sections.
 2. **Tasks**: for each task in `== tasks` (overdue, or open 21 days or more), ask the owner: do, date, someday or drop.
 3. **Open items**: for each question and waiting task in `== open`, ask: answer, chase or drop.
-4. **Coming due**: list the routines, dated tasks, birthdays and target dates in `== due`, one line each with its source.
+4. **Coming due**: list the routines, dated tasks, events, birthdays and target dates in `== due`, one line each with its source. An event comes with its day and time; it needs no answer. An event that comes back is listed on each of its days: give it once, with its days.
 5. **Posts**: list the marked entries in `== marked` as proposals, and hand them to the `posting` skill. Post nothing unapproved.
 6. **Quiet and names**: show `== quiet` (projects and people mentioned in the four weeks before the last two, and not since) and `== names` (names with no note), for the owner to decide.
 7. **Shared vault**: name each line's writer from its day page's name: `2026-11-12-sam.md` is sam's.
