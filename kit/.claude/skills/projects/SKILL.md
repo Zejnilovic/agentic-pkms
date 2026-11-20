@@ -16,6 +16,7 @@ A project note holds the owner's overview: what it is, its Now, goals, decisions
 Create it with `pkm new project "<name>"`. Its frontmatter is pkm's project template: `type: project`, `status:` (`idea`, `active`, `paused`, `done` or `dropped`), `target:`, `summary:` and `aliases:`. Sections:
 
 - **Now**: five to ten lines: the current milestone, the next decision, what the project waits for, the owner's next actions.
+- **Next time**: what to raise at the project's next meeting, such as a weekly call with the customer, posted there and struck once raised.
 - **Goals**, with dates. **People**: who does what.
 - **Risks** and **Decisions**: entries posted from their day with `pkm post` (the posting skill), such as `- Decided: we cut the mobile app ([[2026-11-10]])`. **Later**: ideas for the project.
 - **Links**: one line per address where the work lives, for example `- GitHub: https://github.com/acme-example/apollo`.

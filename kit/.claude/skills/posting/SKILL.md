@@ -33,6 +33,8 @@ You propose; the owner answers by number; pkm copies. Entries reach notes only t
 - Facts only: role, how to reach them, what helps the relationship. Feelings and doubts stay on the day page, and are not carried into the person's note.
 - No secrets, such as passwords, keys or card numbers.
 - A birthday goes in the frontmatter as `birthday: 1985-03-14`; `pkm upcoming` lists it.
+- Health and other private matters about someone: only what the owner needs to act on, word for word, with who said it. Never infer one. When the vault has no folder off limits for them, ask the owner where they belong before posting.
+- A post to a person without a section lands at the note's end. A new person note ends with `## Next time` and `## Notes`, so it lands in Notes. For an older note without them, propose adding both before its first Next time post.
 
 ## Source notes
 
@@ -49,6 +51,10 @@ A name mentioned three times, or a new contact who matters, gets a note. Propose
 ## Renames
 
 Rename with `pkm rename <old> <new>`. It rewrites every link and keeps the old name as an alias; `--dry-run` shows the changes first. When two notes would share a name, add a qualifier: `<name>-<word>`. Run it only after a yes.
+
+## Next time
+
+What the owner wants to raise at the next meeting is posted to `<note>#Next time`, in a person's, project's or area's note: `pkm post <path:line> "<note>#Next time"`. Once it was raised, propose `pkm strike <path:line>` for its line.
 
 ## Strikes
 

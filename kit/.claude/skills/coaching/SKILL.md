@@ -28,14 +28,14 @@ The first time a coaching note is written, ask the owner what may be recorded an
 ## Prepare a 1:1
 
 1. Read Now, Goals, Actions and the last two 1:1 entries. Run `pkm tasks --link <person>-coaching` for the owner's open actions, and `pkm tasks --for <person>` for the tasks and questions that are theirs to do or decide.
-2. Run `pkm since <date of the last 1:1> --about <person>` for what happened since.
-3. Write an agenda of at most six points: the person's topics first, open actions on both sides, goal progress, what the owner noticed with its evidence, and one open question about how they are doing.
+2. Run `pkm since <date of the last 1:1> --about <person>` for what happened since, and `pkm get "<person>#Next time"` for what the owner set aside to raise; its struck lines were raised already.
+3. Write an agenda of at most six points: the person's topics first, the open lines of Next time, open actions on both sides, goal progress, what the owner noticed with its evidence, and one open question about how they are doing.
 4. Put it on today's page under `### HH:MM 1:1 [[<person>]]` after a yes, or reply with it.
 
 ## Record a 1:1
 
 1. After a yes, add a `### YYYY-MM-DD` entry under 1:1s: topics, what they raised in their own words, decisions and agreed actions.
-2. Update Actions: mark what was done, and add what was agreed as waiting tasks with a due date. Update Goals and Now.
+2. Update Actions: mark what was done, and add what was agreed as waiting tasks with a due date. Update Goals and Now. Propose `pkm strike <path:line>` for each Next time line that was raised.
 3. The owner's own actions become tasks with `pkm todo`, linked to the coaching note.
 4. Ask before writing down anything said in confidence.
 5. If the date of the 1:1 is unknown, ask. If it stays unknown, use the date it was written down and say so in the entry.

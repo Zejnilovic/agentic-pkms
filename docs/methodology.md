@@ -187,12 +187,12 @@ notes/apollo.md:31
 $ pkm post daybook/2026/11/2026-11-10.md:10 apollo#Decisions
 notes/apollo.md:35
 $ pkm post daybook/2026/11/2026-11-10.md:11 marta-kovac
-notes/marta-kovac.md:10
+notes/marta-kovac.md:14
 $ pkm post daybook/2026/11/2026-11-16.md:8 marta-kovac
-notes/marta-kovac.md:11
+notes/marta-kovac.md:15
 ```
 
-Marta's new note now holds both entries exactly as written, each with its day:
+Marta's new note now holds both entries exactly as written, each with its day, under Notes. Next time stays empty until you set something aside to raise with her:
 
 ```markdown
 ---
@@ -203,6 +203,10 @@ created: 2026-11-16
 ---
 
 # Marta Kovac
+
+## Next time
+
+## Notes
 
 - Their new contact is Marta Kovac ([[2026-11-10]])
 - 09:05 [[marta-kovac|Marta Kovac]] is [[acme|Acme]]'s project lead ([[2026-11-16]])
@@ -347,6 +351,7 @@ sequenceDiagram
   You->>Coach: Prepare my 1:1 with Jane
   Coach->>pkm: pkm get jane-doe-coaching, her actions and last 1:1
   Coach->>pkm: pkm backlinks jane-doe --since 2026-11-09
+  Coach->>pkm: pkm get "jane-doe#Next time"
   pkm-->>Coach: her actions, the last 1:1, what you wrote since
   Coach-->>You: an agenda, every point with its source
   You->>Coach: after the meeting, what was said
@@ -360,7 +365,7 @@ Coaching notes live in a private folder that you name in the vault's settings, s
 > - Her goal: lead the next release (team/jane-doe-coaching.md:12)
 > - Her birthday is on Thursday (notes/jane-doe.md:4)
 
-Notes about people are written as if those people might read them: facts and what you saw, no guesses about motives. The agent drafts feedback; it never sends it.
+What you set aside for the 1:1 under Jane's `## Next time` comes first on the agenda, and after the meeting the agent proposes striking each line you raised. Notes about people are written as if those people might read them: facts and what you saw, no guesses about motives. Health and other private matters are kept only as you wrote them, with who said it, and the agent never infers one or puts one in a draft for someone else unless you ask. The agent drafts feedback; it never sends it.
 
 ### Recall (study pack)
 
@@ -383,7 +388,7 @@ The agent asks one question at a time and shows your own answer only after you'v
 
 ### Several vaults
 
-The agent works in one vault at a time and writes only there. It never copies anything from one vault into another. For a brief across vaults, it reads another vault only if that vault allows it, with `cross_vault=yes` in its `.pkm/config`, and `pkm --vaults` keeps each vault's lines in a section of its own. Leave that off for a work vault unless your employer allows its notes in the AI service you use.
+The agent works in one vault at a time and writes only there. It never copies anything from one vault into another. For a brief across vaults, it reads another vault only if that vault allows it, with `cross_vault=yes` in its `.pkm/config`, and `pkm --vaults` keeps each vault's lines in a section of its own. Leave that off for a work vault unless your employer allows its notes in the AI service you use. When the first note about someone's health appears, as with coaching or money, the agent asks you where it belongs and what it may read.
 
 ## The rules
 

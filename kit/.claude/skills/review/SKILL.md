@@ -14,7 +14,7 @@ Run this only when the owner asks, never on a schedule of its own. You report; t
 ## The brief
 
 1. Run `pkm since last` and `pkm upcoming 7`. If `since last` prints "Nothing since", say so, give only the Today list, and stop.
-2. Read only that output. If something you need is missing, say so instead of searching.
+2. Read only that output, and for each of today's events that links a note, its open lines with `pkm get "<name>#Next time"`. If something you need is missing, say so instead of searching.
 3. Write four lists, at most 5 lines each, in this format. Leave out Today when nothing happens today:
 
    **Today**
@@ -29,7 +29,7 @@ Run this only when the owner asks, never on a schedule of its own. You report; t
    **Needs attention**
    - Overdue since Friday: send John Roe the Apollo invoice (daybook/2026/11/2026-11-09.md:5)
 
-   Today: the `event` lines dated today in `pkm upcoming 7`, in its order, each with its time as written. Events can't be overdue, so a past one is never raised. New: entries and names that appeared since the last brief. Important: lines the owner marked with `!` or as `Decided:`. Needs attention: overdue or waiting tasks, open questions, and the dates and events of the coming days in `pkm upcoming 7`. Each line states what is there and why it may matter.
+   Today: the `event` lines dated today in `pkm upcoming 7`, in its order, each with its time as written, and under it, at most three open lines of the linked note's Next time, each with its source. Events can't be overdue, so a past one is never raised. New: entries and names that appeared since the last brief. Important: lines the owner marked with `!` or as `Decided:`. Needs attention: overdue or waiting tasks, open questions, and the dates and events of the coming days in `pkm upcoming 7`. Each line states what is there and why it may matter.
 
 4. Run `pkm evidence --verify -` on the draft. Drop every line without a source, or that the check rejects.
 5. Propose tasks for what needs doing, each quoting its line. Propose posts for marked entries not yet posted (`Decided:` and `!`), and hand them to the `posting` skill: "Shall I post …?". Add nothing without a yes.
@@ -59,3 +59,4 @@ Every action waits for the owner's yes, one answer per item.
 - Propose changes; make none without a yes.
 - Name what the owner said only in their own words, quoted and linked.
 - No advice unless asked. If something is not in the notes, say "unknown".
+- Health and other private matters about someone appear only as written, with their source, never inferred, and never in a draft for someone else unless the owner asks.
