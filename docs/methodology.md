@@ -451,6 +451,7 @@ No study has measured whether an agent makes a personal note system better kept 
 | `pkm strike <path:line>` | Strikes a line that is no longer true, linked to today |
 | `pkm since last`, `pkm since --seen` | The digest behind the brief; marks it seen |
 | `pkm since <cycle> --about <name>` | What happened about a note since a cycle began |
+| `pkm since <cycle> --about <name> --sum` | The time spent on it: entries timed as a range, or ending in a duration such as `(1h30)` |
 | `pkm upcoming 7` | Dates and events in the coming week, routines included |
 | `pkm close` | The material for the close |
 | `pkm evidence --verify <note>`, `pkm evidence --verify -` | Checks that every line of a summary, in a note or piped in, has a source, and that the source exists |

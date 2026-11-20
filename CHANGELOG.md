@@ -7,6 +7,9 @@ Version numbers: **major** when something is renamed or removed and existing vau
 ## 0.3.0 (unreleased)
 
 - **Money tied to notes** (ledger pack): a transaction names the note it belongs to with `; note: <name>` (a project, an area, an item or a person), so hledger answers what the bathroom cost: `register 'tag:note=^bathroom$'`. A new Invoices section: an invoice is a waiting task until it is paid, then the task is done and the income recorded with its note. Older `; project:` and `; item:` tags still read. pkm gets no amount marker: money stays in the journal, where hledger adds up.
+- **Time spent** (pkm 0.6.0): the study pack answers how long the owner studied with `pkm since … --under <course> --sum`; project summaries add the time spent when asked; the ledger's invoices take their hours from `pkm since … --about <client> --sum`. The agent never adds up time or money itself.
+- **pkm 0.6**: the kit needs pkm 0.6 ([scripts-pkms](https://github.com/Zejnilovic/scripts-pkms) 0.6.0); its checks run against that release.
+- **Manual steps**: upgrade pkm to 0.6 on each machine (`brew upgrade pkm`), then `pkm version --require 0.6` confirms it.
 - **Methodology**: the digest excerpt's names match what `pkm since last` prints on the work example.
 
 ## Released

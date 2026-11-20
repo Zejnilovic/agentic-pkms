@@ -47,6 +47,10 @@ The mark `(recall <date> <N>d)` ends the question line. Its date is when to ask.
    It goes at the end of the course's `## Questions`, due tomorrow. Give each answer as its own `--answer`.
 5. Do not write questions on day pages, and do not post them: a day page is a record.
 
+## Time studied
+
+When the owner asks how long they studied, run `pkm since <date or cycle> --under <course> --sum`, or `--under learning` for every course of the area. pkm counts the entries timed as a range, `- 19:00-20:30 …`, and those ending in a duration such as `(1h30)`. Give the total as pkm prints it, with the lines it lists. Never add up time yourself.
+
 ## Rules
 
 - Quiz only from the owner's notes. If a note has no answer, say so.

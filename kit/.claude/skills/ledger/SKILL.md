@@ -52,9 +52,10 @@ hledger adds up. Never add up by hand. Report the numbers as hledger prints them
 
 ## Invoices
 
-1. Sending an invoice is a task with a wait: `- [ ] Invoice [[acme]] for October (waiting 2026-11-03)`, through the `tasks` skill.
-2. When the owner says it was paid, propose two things: `pkm done <words>` for the task, and the income, `income:clients:<name>` with `; note: <the client or project>`, dated the day it arrived.
-3. "Is it paid?" is answered from the task (`pkm tasks waiting`) and the journal (`register 'tag:note=^acme$' income`), each with its source. Never assume a payment that neither shows.
+1. The hours to bill come from `pkm since <first day> --about <client> --sum`, as pkm prints them. The rate and the amount come from the owner; never work out an amount they didn't give.
+2. Sending an invoice is a task with a wait: `- [ ] Invoice [[acme]] for October (waiting 2026-11-03)`, through the `tasks` skill.
+3. When the owner says it was paid, propose two things: `pkm done <words>` for the task, and the income, `income:clients:<name>` with `; note: <the client or project>`, dated the day it arrived.
+4. "Is it paid?" is answered from the task (`pkm tasks waiting`) and the journal (`register 'tag:note=^acme$' income`), each with its source. Never assume a payment that neither shows.
 
 ## Items
 

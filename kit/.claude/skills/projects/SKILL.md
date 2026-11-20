@@ -37,7 +37,7 @@ Run them when the owner asks. They cover the active projects since the last clos
 ## Updates and cycle summaries
 
 1. Run `pkm since <cycle> --under <name>` for the entries about the project and the notes under it, and do the rounds for the same period.
-2. Draft the update or summary: one line per fact, each linking its entry (`[[2026-11-10]]`) or its address.
+2. Draft the update or summary: one line per fact, each linking its entry (`[[2026-11-10]]`) or its address. When the owner asks for the time spent, add the total that `pkm since <cycle> --under <name> --sum` prints.
 3. Run `pkm evidence --verify -` on the draft, and drop any line that fails it.
 4. The owner edits the draft and sends it. You never send.
 
