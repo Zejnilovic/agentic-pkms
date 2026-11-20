@@ -1,4 +1,4 @@
-<!-- agentic-pkms 0.2.0. From agentic-pkms down to "This project": kit updates replace it, so don't edit it. The rest belongs to this vault. -->
+<!-- agentic-pkms 0.3.0. From agentic-pkms down to "This project": kit updates replace it, so don't edit it. The rest belongs to this vault. -->
 
 # Working agreement for this vault
 

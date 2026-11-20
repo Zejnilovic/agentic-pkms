@@ -117,9 +117,9 @@ daybook/2026/11/2026-11-10.md:10: - Decided: we cut the mobile app from the firs
 daybook/2026/11/2026-11-12.md:9: - 17:40 Decide with the team: should we move the demo to a Tuesday?
 daybook/2026/11/2026-11-12.md:10: - 17:55 Idea: a self-service export for [[acme]], maybe next year
 == names
-john-roe        4 mentions  last today
-acme            3 mentions  last 4 days ago
-apollo          3 mentions  last 5 days ago
+acme            4 mentions  last 4 days ago
+apollo          3 mentions  last 4 days ago
+john-roe        3 mentions  last today
 …
 ```
 
