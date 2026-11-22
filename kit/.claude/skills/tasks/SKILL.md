@@ -26,6 +26,8 @@ Put markers at the end of the task line, in parentheses.
 | `(at 2026-11-20 14:00-15:00)` or `(@ …)` | A time. On a task, it is due that day unless it has a `(due …)` |
 | `(for [[jane-doe]])` or `(for sam)` | Whose move it is: they do the task, or decide the question. A link, or the name of a writer of a shared vault. A writer's tasks without one are theirs |
 
+What needs doing every day, such as a parent's pills, is never `(every 1d)`: each missed day would be overdue at every close. Propose a list note (`type: list`) with its boxes, ticked as the day goes and unticked for the next; those boxes are not tasks.
+
 ## Events
 
 An event is a line without a box that ends with `(at <when>)` or `(@ <when>)`: `- Parents' evening (at 2026-11-19 17:30-19:00)`. `<when>` is a date, a date and `HH:MM`, a date and `HH:MM-HH:MM`, or `<date> to <date>`; on a day page the date may be relative. An event is never a task and never overdue; `pkm upcoming` lists it on its days. Write one only for what no calendar holds already, and give it a box only when there is something to do.

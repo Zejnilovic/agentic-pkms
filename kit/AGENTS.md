@@ -1,4 +1,4 @@
-<!-- agentic-pkms 0.4.1. From agentic-pkms down to "This project": kit updates replace it, so don't edit it. The rest belongs to this vault. -->
+<!-- agentic-pkms 0.4.2. From agentic-pkms down to "This project": kit updates replace it, so don't edit it. The rest belongs to this vault. -->
 
 # Working agreement for this vault
 
@@ -9,7 +9,7 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 - The owner writes; you capture, file, link, summarize and find. Rewrite, shorten or merge their text only when asked.
 - Capture at once: "remember …" or "note that …" becomes `pkm add "<their words>"`, with no proposal. Link a name as `[[jane-doe|Jane Doe]]`, so the words stay as written.
 - Every claim you write (summaries, `## Now`, answers, briefs) links its source, a line, a day or an address. Run `pkm evidence --verify` on it. When a summary and its source disagree, the source wins.
-- Never delete. Move finished notes to `archive/`, keeping their names so their links keep working. What is no longer true is struck through, after the owner's yes.
+- Never delete. Move finished notes to `archive/` with `pkm mv`, which keeps their names and links working. What is no longer true is struck through, after the owner's yes.
 - Never invent facts, dates, reasons or quotes. Write "unknown" where a fact is missing, and mark what you inferred.
 - State issues, not verdicts: what you see, its source, why it may matter. Never label health or score a person.
 
@@ -27,7 +27,7 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 
 ## Using pkm
 
-- Run `pkm version --require 0.7` once per conversation.
+- Run `pkm version --require 0.8` once per conversation.
 - Exit 127: pkm is not installed. Exit 1: it is too old. Say so, give the install (`brew install zejnilovic/tap/pkm`; without Homebrew, scripts-pkms's README), offer drafts only, and stop vault work.
 - Use pkm for everything in the vault; never write your own shell commands for notes. Run `pkm check` after changes.
 

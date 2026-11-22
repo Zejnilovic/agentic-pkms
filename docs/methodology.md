@@ -396,7 +396,7 @@ These are in the working agreement every agent in the vault reads.
 
 1. **Your words stay yours.** The agent adds links and posts your entries with pkm; it never rewrites them unless you ask. A task it proposes quotes your entry, or names and links the item in a tool.
 2. **Every claim links its source**, and pkm checks that the source exists. A source is a line in the vault, a day, or an address in a tool. When a summary and its source disagree, the source wins.
-3. **Nothing is deleted, nothing is invented.** Finished notes move to the archive, and what is no longer true is struck through, after your yes. A missing fact is "unknown", not a plausible guess.
+3. **Nothing is deleted, nothing is invented.** Finished notes move to the archive with `pkm mv`, keeping their names and links, and what is no longer true is struck through, after your yes. A missing fact is "unknown", not a plausible guess.
 4. **Issues, not verdicts.** It raises what it sees as a fact, with its source and why it may matter. It never labels a project's health and never scores you.
 5. **Proposals, not actions.** It proposes posts, tasks, questions, strikes and new notes, and waits for your yes. It drafts messages, feedback, updates and reports, and never sends them, arranges meetings, or commits and pushes your vault unless you ask. A change in a tool, such as a ticket's state, is shown as the exact command and runs only after your yes, for that one change.
 6. **The right tool for each place.** pkm for everything in the vault, and each place's own command-line tool for boards and code, reading only unless you said yes. It never improvises its own commands to search or edit notes. A missing or outdated tool is reported, not worked around.
@@ -447,11 +447,13 @@ No study has measured whether an agent makes a personal note system better kept 
 | `pkm find <words>`, `pkm backlinks <name>` | Finds lines by words, or every line that links a note |
 | `pkm get <name>#<section>` | Reads one section of a note; `--plain` gives it to paste for someone outside the vault |
 | `pkm list type=<type>` | Lists notes of a kind |
+| `pkm overview` | The shape of the vault: each area with the notes `part_of` it, as a tree, then projects and resources |
 | `pkm links --external [<note>]` | Lists the links to the outside, such as boards and code |
 | `pkm tasks`, `pkm done <words>` | Lists open tasks; ticks one, or moves a routine on |
 | `pkm tasks --for <who>`, `pkm tasks --under <note>` | Someone's tasks and questions; the tasks of a project or an area and the notes in it |
 | `pkm moved <path:line> <when>` | A task or an event whose date changed: struck, and written again with the new date |
 | `pkm new <type> <title>` | Makes a note from its template |
+| `pkm mv <note> archive` | Moves a finished note to the archive, keeping its name and links |
 | `pkm post <path:line> <note>#<section>` | Copies an entry into a note, word for word, with its day |
 | `pkm strike <path:line>` | Strikes a line that is no longer true, linked to today |
 | `pkm since last`, `pkm since --seen` | The digest behind the brief; marks it seen |

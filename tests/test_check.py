@@ -6,6 +6,7 @@ changes only what it says. Run from the repo root: python3 -m unittest discover 
 
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -14,7 +15,10 @@ import unittest
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 COPY_IGNORE = shutil.ignore_patterns(".git", ".local_context", "__pycache__", ".agd.lock")
-REQUIRE = "pkm version --require 0.1"
+# The kit's own line, so the tests follow each raise of the required pkm version.
+REQUIRED = re.search(r"pkm version --require ([0-9]+\.[0-9]+)", (REPO / "kit/AGENTS.md").read_text()).group(1)
+REQUIRE = f"pkm version --require {REQUIRED}"
+NEWER = f"{REQUIRED.split('.')[0]}.{int(REQUIRED.split('.')[1]) + 1}"
 FAKE_PKM = "#!/bin/bash\nprintf 'version\\tSetup\\tthe release\\nevidence\\tCheck\\tlinks\\n'\n"
 
 
@@ -26,7 +30,7 @@ class CheckCase(unittest.TestCase):
         shutil.copytree(REPO, self.repo, ignore=COPY_IGNORE)
         self.checkout = self.tmp / "scripts-pkms"
         (self.checkout / "bin").mkdir(parents=True)
-        (self.checkout / "VERSION").write_text("0.1.0\n")
+        (self.checkout / "VERSION").write_text(f"{REQUIRED}.0\n")
         (self.checkout / "bin" / "pkm").write_text(FAKE_PKM)
 
     def edit(self, relative, old, new):
@@ -61,9 +65,9 @@ class VersionLine(CheckCase):
         self.assertIn("the 'pkm version --require' line is in kit/.claude/skills/tasks/SKILL.md, not kit/AGENTS.md", out)
 
     def test_newer_than_the_checkout_is_reported(self):
-        self.edit("kit/AGENTS.md", REQUIRE, "pkm version --require 0.2")
+        self.edit("kit/AGENTS.md", REQUIRE, f"pkm version --require {NEWER}")
         _, out = self.run_check()
-        self.assertIn("kit/AGENTS.md requires pkm 0.2, but the scripts-pkms checkout is 0.1.0", out)
+        self.assertIn(f"kit/AGENTS.md requires pkm {NEWER}, but the scripts-pkms checkout is {REQUIRED}.0", out)
 
     def test_same_version_as_the_checkout_passes(self):
         _, out = self.run_check()

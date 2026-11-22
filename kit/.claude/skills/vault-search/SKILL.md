@@ -18,6 +18,7 @@ Find first, then read the smallest part that answers. Reading more makes answers
    - `pkm find <word> [<word>...]`: lines that hold every word, `path:line: text`.
    - `pkm backlinks <name> [--since YYYY-MM-DD]`: every line that links a note, and the lines under a `###` heading that links it.
    - `pkm names [--type <type>]` or `pkm path <name>`: which note a name means.
+   - `pkm overview`: the vault's shape, each area with the notes `part_of` it, then projects and resources. Use it when you don't know which note a question is about.
    - `pkm list <field>=<value>`: notes whose frontmatter matches.
    - `pkm since <date|N|cycle> --about <name>`: what happened about a name since a date.
    - `--under <note>` on `tasks`, `since`, `list` and `backlinks`: only a project's or an area's notes (by `part_of`), and the day lines about them.
