@@ -99,3 +99,4 @@ markdown_extensions:
 nav:
   - Home: index.md
   - The agentic Daybook: methodology.md
+  - For your AI agent: agent.md

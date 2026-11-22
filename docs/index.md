@@ -24,6 +24,8 @@ The kit is a set of instructions, skills and agents copied into your vault. It i
 4. **Describe the vault.** Fill in "This project" at the end of `AGENTS.md`: who keeps it, the languages you write in, and any folder agents must not read.
 5. **Ask for a brief.** "What's new? What needs me?"
 
+Or hand [For your AI agent](agent.md) to your assistant: it lists the files and links it needs to do these steps with you.
+
 Optional packs add coaching, projects, writing, a ledger and studying. The [README](https://github.com/Zejnilovic/agentic-pkms#packs) lists every skill, agent and pack.
 
-[How it works](methodology.md){ .md-button .md-button--primary } [The Daybook Method](https://zejnilovic.github.io/scripts-pkms/){ .md-button }
+[How it works](methodology.md){ .md-button .md-button--primary } [For your AI agent](agent.md){ .md-button } [The Daybook Method](https://zejnilovic.github.io/scripts-pkms/){ .md-button }
