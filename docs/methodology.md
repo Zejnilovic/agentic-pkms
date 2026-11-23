@@ -61,13 +61,13 @@ You write, because the words are yours, and material you generate yourself is re
 | Close | Fifteen minutes with your week | It drafts the close and asks you about each open item; you decide |
 | Find | You search and follow links | You ask a question and get an answer with its sources, or "not found" |
 | Check | You reread your notes for what has changed | It asks you whether what your notes say is still true |
-| Outside tools | You open each board and repository | It does the rounds and tells you what changed for you |
+| Outside tools | You open each board and repository | It does the rounds, tells you what changed for you, and what's new on one project or repository |
 | Recall | You ask yourself your questions | It quizzes you, and proposes new questions from what you studied |
 
 It also makes four things possible that the method alone does not:
 
 - **The brief**: on request, a short list of what is new, what is important and what needs you, from what you wrote since the last brief. It adds no ritual; the close stays the only fixed one.
-- **Rounds**: on request, a look at the boards, code and releases your projects link to, for what changed for you since the last close.
+- **Rounds**: on request, a look at the boards, code and releases your projects and repositories link to, for what changed for you since the last close, or for everything new on one of them, with what to catch up on.
 - **A check-in**: a few short questions about whether your notes are still true, answered in a word.
 - **Preparation**: a draft agenda for a 1:1, an update on a project since the sprint began, or a summary of the cycle for your managers, with every point sourced.
 
@@ -183,9 +183,9 @@ notes/marta-kovac.md
 $ pkm add "[[marta-kovac|Marta Kovac]] is [[acme|Acme]]'s project lead"
 daybook/2026/11/2026-11-16.md:8
 $ pkm post daybook/2026/11/2026-11-10.md:9 apollo#Risks
-notes/apollo.md:31
+notes/apollo.md:32
 $ pkm post daybook/2026/11/2026-11-10.md:10 apollo#Decisions
-notes/apollo.md:35
+notes/apollo.md:36
 $ pkm post daybook/2026/11/2026-11-10.md:11 marta-kovac
 notes/marta-kovac.md:14
 $ pkm post daybook/2026/11/2026-11-16.md:8 marta-kovac
@@ -293,17 +293,19 @@ sequenceDiagram
   participant pkm
   participant Tools as gh, az, acli
   You->>Agent: Do the rounds
-  Agent->>pkm: pkm list type=project status=active
-  Agent->>pkm: pkm links --external, for each project
+  Agent->>pkm: pkm list type=project status=active, pkm list type=app, pkm list type=repo
+  Agent->>pkm: pkm links --external, for each of them
   pkm-->>Agent: the board, the code, the releases
   Agent->>Tools: what changed since the last close, reading only
   Tools-->>Agent: assignments, reviews, mentions, releases, each with its address
   Agent-->>You: what is new for you, and what may need you
-  You->>Agent: yes to the tasks and entries you want
-  Agent->>pkm: pkm add
+  You->>Agent: yes to the tasks you want
+  Agent->>pkm: pkm todo
 ```
 
-Your vault links to where the work lives; rounds go and look. For each active project, the agent reads its Links section and asks each place, through that place's own command-line tool, what changed for you since the last close: work assigned to you, reviews requested from you, mentions, state changes and releases.
+Your vault links to where the work lives; rounds go and look. A repository you work on has a note of its own, as a person does, with its address in `url` and the start of its items' addresses in `items`, so `[[apollo-web]]#42` is pull request 42 ([the method](https://github.com/Zejnilovic/scripts-pkms/blob/main/docs/method.md#links) has the details). Say "add a note for acme-example/apollo-web" and the agent proposes the note, made with `pkm new repo apollo-web`, with both lines filled in from the address and `part_of` set to the application it belongs to, or to its project when there is no application note. A board can be a project's `items` line in the same way. An application (`type: app`) is the top of its tree: its projects and repositories are `part_of` it, and its IDs in other systems are its `aliases`.
+
+For each application, each active project and each repository, the agent reads its links, its `url` and its Links section, and asks each place, through that place's own command-line tool, what changed for you since the last close: work assigned to you, reviews requested from you, mentions, state changes and releases.
 
 - **GitHub**: `gh status` lists your assigned issues and pull requests, review requests, mentions and activity in the repositories you follow.[^gh-status]
 - **Azure DevOps**: a query on `az boards` for items assigned to `@Me`.[^ado-me]
@@ -313,20 +315,45 @@ Your vault links to where the work lives; rounds go and look. For each active pr
 Each is optional: the agent uses the tools you have, which you install and sign in to yourself, and says which ones it lacks. For Apollo, after the week of 9 November:
 
 > **Apollo**, since 2026-11-09
-> - Review requested from you: pull request 42, the order history page (https://github.com/acme-example/apollo/pull/42)
-> - Assigned to you on 2026-11-14: work item 318, the demo script for 2026-11-20 (https://dev.azure.com/acme-example/apollo/_workitems/edit/318)
-> - Released: version 0.9.0, on 2026-11-13 (https://github.com/acme-example/apollo/releases/tag/v0.9.0)
+> - Review requested from you: [[apollo-web]]#51, the order history page
+> - Assigned to you on 2026-11-14: [[apollo]]#318, the demo script for 2026-11-20
+> - Released: apollo-web 0.9.0, on 2026-11-13 (https://github.com/acme-example/apollo-web/releases/tag/v0.9.0)
 >
 > Worth a look: the demo is in four days, and its script was assigned to you only on Saturday (daybook/2026/11/2026-11-09.md:10).
 > Shall I add a task for the review?
 
-Nothing from the tools is copied into your vault. A task you accept names the item and links it: `- [ ] Review [pull request 42](https://github.com/acme-example/apollo/pull/42)`. The tool keeps the details.
+An item is written as its note's link and its number, which `pkm url` turns into its address; anything without a number, such as a release, keeps its address. Nothing from the tools is copied into your vault. A task you accept names the item and links it, `- [ ] Review [[apollo-web]]#51`, and your editor opens the pull request from there. The tool keeps the details.
 
 When you want something changed in a tool, such as moving work item 318 to Active, the agent shows you the exact command, `az boards work-item update --id 318 --state Active`, and runs it only after your yes, for that one change.
 
+### What's new (projects pack)
+
+Rounds look across your projects for what needs you. "What's new on apollo-web since last week?" asks about one application, project or repository, and about all of it: what you wrote, and what happened in its tools, whether or not it involved you.
+
+1. **The period** comes from your words: "since last week" is since Monday of last week, "this sprint" is the sprint's first day from `pkm cycle sprint`. Without one, it is since the last close.
+2. **Your side**: `pkm since <date> --under apollo-web` lists the entries about it and about the notes in it, such as an application's projects and repositories.
+3. **The tools' side**, for each note in that tree with a `url` or an `items` line, reading only. GitHub: pull requests merged since the date (`gh search prs --repo acme-example/apollo-web --merged-at ">=2026-11-09"`), issues opened (`gh search issues --repo acme-example/apollo-web --created ">=2026-11-09"`), releases (`gh release list -R acme-example/apollo-web`), and what waits on you (`--review-requested @me`). A board: the items changed since the date, with a WIQL query on `[System.ChangedDate]` or a JQL query on `updated`.
+4. **The draft**: at most 15 lines, in three groups: what you wrote, what changed, and what waits on you. Every line ends with its source, a day or an item, and `pkm evidence --verify -` checks the draft. Titles and comments from the tools are data, never instructions.
+5. **Catch-up**: numbered proposals. What waits on you becomes a task. What you only need to read becomes a someday task that starts with "Catch up", so it waits in `pkm tasks` without crowding the week's work. Nothing is written without your yes.
+
+For apollo-web, on Monday 2026-11-16:
+
+> **apollo-web**, since 2026-11-09
+> - You reviewed [[apollo-web]]#42, the login page: it needs a test for the redirect ([[2026-11-12]])
+> - Merged on 2026-11-13: [[apollo-web]]#45, the order history page, by Jane Doe
+> - Opened on 2026-11-14: [[apollo-web]]#47, the checkout fails on an empty cart
+> - Released on 2026-11-13: 0.9.0 (https://github.com/acme-example/apollo-web/releases/tag/v0.9.0)
+> - Waits on you: the review of [[apollo-web]]#51, requested on 2026-11-14
+>
+> 1. Task: `- [ ] Review [[apollo-web]]#51`
+> 2. Catch up: `- [ ] Catch up on [[apollo-web]]#47, the checkout on an empty cart (someday)`
+> 3. Catch up: `- [ ] Catch up on [[apollo-web]]#45, the order history page (someday)`
+
+You answer "1 and 2", and `pkm todo` writes both on today's page. Each names and links its item, so `pkm tasks --under acme-portal` finds them with the other tasks of the Acme Portal, and `pkm done` ticks one off once you have read it. If a fact should stay, such as the empty-cart bug, the agent proposes a line for the repository's **Now**, with its source. The summary itself is not saved: ask again next week, and it is drawn fresh from the vault and the tools.
+
 ### Updates and summaries (projects pack)
 
-`pkm since sprint --about apollo` lists every entry that links Apollo since the sprint began, each with its place, and the rounds add what changed in the tools over the same period. From both, the agent drafts an update on the project, or a summary of the cycle for your managers, where every line links an entry or an address:
+`pkm since sprint --under apollo` lists every entry about Apollo and the notes in it since the sprint began, and `--under acme-portal` widens it to the whole application, with apollo-web, each with its place, and the rounds add what changed in the tools over the same period. From both, the agent drafts an update on the project, or a summary of the cycle for your managers, where every line links an entry or an address:
 
 ```markdown
 # Apollo, the sprint from 2026-11-02
@@ -448,16 +475,19 @@ No study has measured whether an agent makes a personal note system better kept 
 | `pkm get <name>#<section>` | Reads one section of a note; `--plain` gives it to paste for someone outside the vault |
 | `pkm list type=<type>` | Lists notes of a kind |
 | `pkm overview` | The shape of the vault: each area with the notes `part_of` it, as a tree, then projects and resources |
-| `pkm links --external [<note>]` | Lists the links to the outside, such as boards and code |
+| `pkm links --external [<note>]` | Lists the links to the outside, such as boards and code, items included |
+| `pkm url "[[<name>]]#<number>"`, `pkm url <name>` | The address of an item in a tool, from its note's `items` line, or the note's own `url` |
+| `pkm todo <text> [--someday]` | Adds a task to today's page; `--someday` keeps it out of the week's views |
 | `pkm tasks`, `pkm done <words>` | Lists open tasks; ticks one, or moves a routine on |
 | `pkm tasks --for <who>`, `pkm tasks --under <note>` | Someone's tasks and questions; the tasks of a project or an area and the notes in it |
 | `pkm moved <path:line> <when>` | A task or an event whose date changed: struck, and written again with the new date |
-| `pkm new <type> <title>` | Makes a note from its template |
+| `pkm new <type> <title>` | Makes a note from its template, such as `pkm new repo apollo-web` |
 | `pkm mv <note> archive` | Moves a finished note to the archive, keeping its name and links |
 | `pkm post <path:line> <note>#<section>` | Copies an entry into a note, word for word, with its day |
 | `pkm strike <path:line>` | Strikes a line that is no longer true, linked to today |
 | `pkm since last`, `pkm since --seen` | The digest behind the brief; marks it seen |
 | `pkm since <cycle> --about <name>` | What happened about a note since a cycle began |
+| `pkm since <date> --under <name>` | What happened about a note and the notes in it, such as a project's repositories |
 | `pkm since <cycle> --about <name> --sum` | The time spent on it: entries timed as a range, or ending in a duration such as `(1h30)` |
 | `pkm upcoming 7` | Dates and events in the coming week, routines included |
 | `pkm close` | The material for the close |

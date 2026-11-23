@@ -3,13 +3,13 @@
   "configurations": [
     {
       "name": "pkm-site",
-      "runtimeExecutable": "/private/tmp/claude-501/-Users-sasa--claude-spares-spare-zBuI4p/c41984eb-079a-438b-be4a-ada8eb939a0f/scratchpad/venv/bin/mkdocs",
+      "runtimeExecutable": "/private/tmp/claude-501/-Users-sasa--claude-spares-spare-9OrnG8/54c2324b-3b99-4d62-abcc-072ee137bf78/scratchpad/venv/bin/mkdocs",
       "runtimeArgs": ["serve", "-f", "/Users/sasa/Development/scripts-pkms/mkdocs.yml", "-a", "127.0.0.1:8001", "--livereload"],
       "port": 8001
     },
     {
       "name": "kit-site",
-      "runtimeExecutable": "/private/tmp/claude-501/-Users-sasa--claude-spares-spare-zBuI4p/c41984eb-079a-438b-be4a-ada8eb939a0f/scratchpad/venv/bin/mkdocs",
+      "runtimeExecutable": "/private/tmp/claude-501/-Users-sasa--claude-spares-spare-9OrnG8/54c2324b-3b99-4d62-abcc-072ee137bf78/scratchpad/venv/bin/mkdocs",
       "runtimeArgs": ["serve", "-f", "/Users/sasa/Development/agentic-pkms/mkdocs.yml", "-a", "127.0.0.1:8002", "--livereload"],
       "port": 8002
     }

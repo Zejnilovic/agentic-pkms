@@ -1,4 +1,4 @@
-<!-- agentic-pkms 0.4.2. From agentic-pkms down to "This project": kit updates replace it, so don't edit it. The rest belongs to this vault. -->
+<!-- agentic-pkms 0.5.0. From agentic-pkms down to "This project": kit updates replace it, so don't edit it. The rest belongs to this vault. -->
 
 # Working agreement for this vault
 
@@ -27,7 +27,7 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 
 ## Using pkm
 
-- Run `pkm version --require 0.8` once per conversation.
+- Run `pkm version --require 0.9` once per conversation.
 - Exit 127: pkm is not installed. Exit 1: it is too old. Say so, give the install (`brew install zejnilovic/tap/pkm`; without Homebrew, scripts-pkms's README), offer drafts only, and stop vault work.
 - Use pkm for everything in the vault; never write your own shell commands for notes. Run `pkm check` after changes.
 
@@ -70,4 +70,4 @@ Files marked "From agentic-pkms" are replaced by updates, except a closing `## T
 
 ### Own types and conventions
 
-<!-- Types of your own (folder and template), naming or tagging rules, hub notes worth starting from. -->
+<!-- Types of your own (folder and template), keys of your own and what they mean (such as an ID that several notes carry), naming or tagging rules, hub notes worth starting from. -->

@@ -25,7 +25,7 @@ Ask one question at a time, with an example answer. Accept "skip". Show every li
    7. **Vault name.** Show `vault_<name>=<folder>` for `~/.config/pkm/config` (or `$XDG_CONFIG_HOME/pkm/config`), and append it after a yes.
    8. **Routines.** "Is there anything you do again and again, such as a weekly status?" For each, offer `pkm todo "<text>" --every <rule> --due <date>`, where the rule is `1w`, `1m` or a cycle name. Run it only after a yes; it writes the routines note.
 4. **Install the kit.** For each vault, after a yes, run `agd init Zejnilovic/agentic-pkms` in its folder.
-5. **Fill "This project".** Ask the owner three questions: who keeps this vault and in what role; which languages notes are written in; which folders agents must never read. Write the owner's answers in their own words into "This project" in `AGENTS.md`, after a yes.
+5. **Fill "This project".** Ask the owner three questions: who keeps this vault and in what role; which languages notes are written in; which folders agents must never read. Write the owner's answers in their own words into "This project" in `AGENTS.md`, after a yes. Types and keys of their own, such as an ID that several notes carry, go under "Own types and conventions" when the owner names them.
 6. **Finish.** Run `pkm -V <name> config`, `pkm -V <name> doctor` and `pkm vaults` for each vault. Ask for a first line, and record it with `pkm -V <name> add "<text>"` after a yes.
 7. **Report.** List each file created or changed, by path.
 

@@ -46,7 +46,7 @@ An AI agent for a personal knowledge vault: plain Markdown that you write and de
 | [`check-in`](kit/.claude/skills/check-in/SKILL.md) | core | Asking whether your notes are still true, and talking a decision through. |
 | [`pkms-init`](kit/.claude/skills/pkms-init/SKILL.md) | core | Setting up a vault with you, one question at a time. |
 | [`coaching`](kit/.claude/skills/coaching/SKILL.md) | coaching | Coaching notes, 1:1 preparation and records, feedback drafts. |
-| [`projects`](kit/.claude/skills/projects/SKILL.md) | projects | Project overviews, rounds over your project tools, and updates. |
+| [`projects`](kit/.claude/skills/projects/SKILL.md) | projects | Project, application, repository and team notes, rounds over your project tools, what's new on one of them, and updates. |
 | [`writing`](kit/.claude/skills/writing/SKILL.md) | writing | Articles, guides and posts, from idea to published. |
 | [`ledger`](kit/.claude/skills/ledger/SKILL.md) | ledger | Spending in an hledger journal, and notes on things you own. |
 | [`study`](kit/.claude/skills/study/SKILL.md) | study | Quizzing you on your own notes with `pkm recall`, and proposing questions for a course. |
