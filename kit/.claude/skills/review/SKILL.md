@@ -1,6 +1,6 @@
 ---
 name: review
-description: Brings the owner a brief of what is new, important and needing attention, from pkm's digest, and runs the close with its do, date, answer and chase choices. Use only when the owner asks for the brief or the close.
+description: The brief of what is new, important and needing attention, from pkm's digest, and the close with its do, date, answer and chase choices. Use only when the owner asks for the brief or the close.
 ---
 
 <!-- From agentic-pkms. Kit updates replace this file except a "## This project" section at the end, which belongs to the vault. Edit nothing else. Vault rules go in AGENTS.md "This project". -->

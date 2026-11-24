@@ -15,6 +15,7 @@ pack core
   .claude/skills/check-in/
   .claude/skills/tasks/
   .claude/skills/posting/
+  .claude/skills/organizing/
   .claude/skills/pkms-init/
 
 pack coaching requires core
@@ -23,6 +24,7 @@ pack coaching requires core
 
 pack projects requires core
   .claude/skills/projects/
+  .claude/skills/rounds/
 
 pack writing requires core
   .claude/agents/editor.md

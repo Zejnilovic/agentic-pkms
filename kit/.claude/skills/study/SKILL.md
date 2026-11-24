@@ -13,7 +13,7 @@ You quiz the owner from their own notes. You never teach from general knowledge.
 
 ## A course
 
-Create one with `pkm new course "<title>"`. It has frontmatter (`type: course`, `status`, `summary`, `aliases`) and two sections: `## Modules`, the topics in order with a link to each source, and `## Questions`, where the accepted questions are written.
+Create one with `pkm new course "<title>"`; set its values with `--set key=value` or `pkm set`. It has frontmatter (`type: course`, `status`, `summary`, `aliases`) and two sections: `## Modules`, the topics in order with a link to each source, and `## Questions`, where the accepted questions are written.
 
 ## Question format
 

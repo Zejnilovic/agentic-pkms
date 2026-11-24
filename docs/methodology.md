@@ -61,6 +61,7 @@ You write, because the words are yours, and material you generate yourself is re
 | Close | Fifteen minutes with your week | It drafts the close and asks you about each open item; you decide |
 | Find | You search and follow links | You ask a question and get an answer with its sources, or "not found" |
 | Check | You reread your notes for what has changed | It asks you whether what your notes say is still true |
+| Organize | You make notes and fill in their frontmatter | You say "set up project-v9 and connect its repositories"; it proposes one table of pkm commands, and pkm makes the notes |
 | Outside tools | You open each board and repository | It does the rounds, tells you what changed for you, and what's new on one project or repository |
 | Recall | You ask yourself your questions | It quizzes you, and proposes new questions from what you studied |
 
@@ -303,7 +304,7 @@ sequenceDiagram
   Agent->>pkm: pkm todo
 ```
 
-Your vault links to where the work lives; rounds go and look. A repository you work on has a note of its own, as a person does, with its address in `url` and the start of its items' addresses in `items`, so `[[apollo-web]]#42` is pull request 42 ([the method](https://github.com/Zejnilovic/scripts-pkms/blob/main/docs/method.md#links) has the details). Say "add a note for acme-example/apollo-web" and the agent proposes the note, made with `pkm new repo apollo-web`, with both lines filled in from the address and `part_of` set to the application it belongs to, or to its project when there is no application note. A board can be a project's `items` line in the same way. An application (`type: app`) is the top of its tree: its projects and repositories are `part_of` it, and its IDs in other systems are its `aliases`.
+Your vault links to where the work lives; rounds go and look. A repository you work on has a note of its own, as a person does, with its address in `url` and the start of its items' addresses in `items`, so `[[apollo-web]]#42` is pull request 42 ([the method](https://github.com/Zejnilovic/scripts-pkms/blob/main/docs/method.md#links) has the details). Say "add a note for acme-example/apollo-web" and the agent proposes `pkm new repo --url acme-example/apollo-web --set part_of=acme-portal`: pkm fills both lines and the title from the address, and `part_of` names the application it belongs to, or its project when there is no application note. Say "connect project-v9 to every repository that starts with project-v9" and it lists them with `gh`, reading only, and proposes one numbered table, a row per repository; you answer by number, and pkm makes the notes. Nothing else comes from the tool: no descriptions, no READMEs. If you like a project's notes in a folder of their own, `part_of_folders=yes` puts them in `notes/project-v9/`, next to `notes/project-v9.md`; links work the same either way. A board can be a project's `items` line in the same way. An application (`type: app`) is the top of its tree: its projects and repositories are `part_of` it, and its IDs in other systems are its `aliases`.
 
 For each application, each active project and each repository, the agent reads its links, its `url` and its Links section, and asks each place, through that place's own command-line tool, what changed for you since the last close: work assigned to you, reviews requested from you, mentions, state changes and releases.
 
@@ -481,8 +482,9 @@ No study has measured whether an agent makes a personal note system better kept 
 | `pkm tasks`, `pkm done <words>` | Lists open tasks; ticks one, or moves a routine on |
 | `pkm tasks --for <who>`, `pkm tasks --under <note>` | Someone's tasks and questions; the tasks of a project or an area and the notes in it |
 | `pkm moved <path:line> <when>` | A task or an event whose date changed: struck, and written again with the new date |
-| `pkm new <type> <title>` | Makes a note from its template, such as `pkm new repo apollo-web` |
-| `pkm mv <note> archive` | Moves a finished note to the archive, keeping its name and links |
+| `pkm new <type> <title> --set key=value` | Makes a note from its template with its frontmatter filled; `pkm new repo --url <address>` fills a repository's |
+| `pkm set <note> key=value` | Changes frontmatter, such as `part_of` or `status`, so nothing is edited by hand |
+| `pkm mv <note> ... <folder>` | Moves notes into a folder, or a finished one to the archive, keeping names and links |
 | `pkm post <path:line> <note>#<section>` | Copies an entry into a note, word for word, with its day |
 | `pkm strike <path:line>` | Strikes a line that is no longer true, linked to today |
 | `pkm since last`, `pkm since --seen` | The digest behind the brief; marks it seen |
@@ -507,10 +509,10 @@ Or let the agent do all of it with the **pkms-init** skill. It asks which vaults
 | Part | Kind | Pack | Where in the kit |
 |---|---|---|---|
 | Working agreement | file | core | `kit/AGENTS.md` |
-| `vault-search`, `tasks`, `posting`, `pkms-init`, `review`, `check-in` | skills | core | `kit/.claude/skills/<name>/SKILL.md` |
+| `vault-search`, `tasks`, `posting`, `organizing`, `pkms-init`, `review`, `check-in` | skills | core | `kit/.claude/skills/<name>/SKILL.md` |
 | `chief-of-staff`, `retriever` | agents | core | `kit/.claude/agents/<name>.md` |
 | `coaching`, and the `coach` agent | skill, agent | coaching | `kit/.claude/skills/coaching/`, `kit/.claude/agents/coach.md` |
-| `projects` | skill | projects | `kit/.claude/skills/projects/` |
+| `projects`, `rounds` | skills | projects | `kit/.claude/skills/<name>/` |
 | `writing`, and the `editor` agent | skill, agent | writing | `kit/.claude/skills/writing/`, `kit/.claude/agents/editor.md` |
 | `ledger` | skill | ledger | `kit/.claude/skills/ledger/` |
 | `study` | skill | study | `kit/.claude/skills/study/` |

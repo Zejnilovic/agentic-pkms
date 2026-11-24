@@ -1,6 +1,6 @@
 ---
 name: posting
-description: Files the owner's entries into notes with pkm: proposes a numbered list, waits for answers by number, copies each entry word for word with its day, then updates summaries and checks. Use to file a day's entries.
+description: Files the owner's entries into notes with pkm: a numbered list, answers by number, each entry copied word for word with its day, then summaries and checks. Use to file a day's entries.
 ---
 
 <!-- From agentic-pkms. Kit updates replace this file except a "## This project" section at the end, which belongs to the vault. Edit nothing else. Vault rules go in AGENTS.md "This project". -->

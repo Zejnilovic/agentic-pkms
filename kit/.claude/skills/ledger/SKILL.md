@@ -59,7 +59,7 @@ hledger adds up. Never add up by hand. Report the numbers as hledger prints them
 
 ## Items
 
-Create one with `pkm new item "<name>"`, in the folder that `folder_item` names, `notes/` by default. Frontmatter: `status` (`owned`, `lent`, `broken`, `sold` or `gone`), `bought`, `price` (with its currency), `shop`, `warranty` (the date it ends), `serial`, and `location`. `pkm upcoming` lists warranty dates in the next two weeks.
+Create one with `pkm new item "<name>" --set key=value ...`, in the folder that `folder_item` names, `notes/` by default; change a value with `pkm set`. Frontmatter: `status` (`owned`, `lent`, `broken`, `sold` or `gone`), `bought`, `price` (with its currency), `shop`, `warranty` (the date it ends), `serial`, and `location`. `pkm upcoming` lists warranty dates in the next two weeks.
 
 - Details: the model, a link to the manual, and the receipt, if the owner keeps one in the vault.
 - Log: repairs, who it was lent to and when, changes.

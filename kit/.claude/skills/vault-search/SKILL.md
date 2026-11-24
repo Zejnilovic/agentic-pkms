@@ -1,6 +1,6 @@
 ---
 name: vault-search
-description: Finds things in a vault too big to read: summaries first, then pkm searches, then only the lines that answer, within a fixed budget. Use before answering any question from the vault or looking for notes to link.
+description: Finds things in a big vault: summaries first, then pkm searches, then only the lines that answer. Use before answering a question from the vault or looking for notes to link.
 ---
 
 <!-- From agentic-pkms. Kit updates replace this file except a "## This project" section at the end, which belongs to the vault. Edit nothing else. Vault rules go in AGENTS.md "This project". -->

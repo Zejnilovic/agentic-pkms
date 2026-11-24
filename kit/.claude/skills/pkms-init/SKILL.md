@@ -1,6 +1,6 @@
 ---
 name: pkms-init
-description: Sets up a Daybook with the owner: checks pkm, asks which vaults they want, runs pkm init, writes settings after a yes, installs the kit, and records a first entry. Use when setting up a new vault or adding one.
+description: Sets up a Daybook with the owner: checks pkm, asks which vaults, runs pkm init, writes settings after a yes, installs the kit and records a first entry. Use to set up or add a vault.
 ---
 
 <!-- From agentic-pkms. Kit updates replace this file except a "## This project" section at the end, which belongs to the vault. Edit nothing else. Vault rules go in AGENTS.md "This project". -->
@@ -21,9 +21,10 @@ Ask one question at a time, with an example answer. Accept "skip". Show every li
    3. **Shared?** "Do others write here, as in a family vault?" If yes, ask the owner's writer name, for example `sam`. Show `writer=sam` for the user config, and append it there.
    4. **Close cycle.** "Do you close each week? Say week, or a cycle such as `sprint 2w from 2026-11-02` (a cycle longer than a week starts from a date) or `payday 1m from 25`." Show `close=<name>` and each `cycle_<name>=...` line for `.pkm/config`, and append after a yes.
    5. **Ignored files.** "What should pkm not see, for example `scans/` or `*.pdf`?" Show the lines and append them to `.pkmignore` after a yes.
-   6. **Cross-vault read.** "May an agent read this vault from another vault, for a brief across them?" Default no; a work vault usually stays no. If yes, append `cross_vault=yes` to `.pkm/config`.
-   7. **Vault name.** Show `vault_<name>=<folder>` for `~/.config/pkm/config` (or `$XDG_CONFIG_HOME/pkm/config`), and append it after a yes.
-   8. **Routines.** "Is there anything you do again and again, such as a weekly status?" For each, offer `pkm todo "<text>" --every <rule> --due <date>`, where the rule is `1w`, `1m` or a cycle name. Run it only after a yes; it writes the routines note.
+   6. **Project folders.** "Should a project's notes sit together in a folder, such as `notes/apollo/` next to `notes/apollo.md`?" Default no: links work either way. If yes, append `part_of_folders=yes` to `.pkm/config`.
+   7. **Cross-vault read.** "May an agent read this vault from another vault, for a brief across them?" Default no; a work vault usually stays no. If yes, append `cross_vault=yes` to `.pkm/config`.
+   8. **Vault name.** Show `vault_<name>=<folder>` for `~/.config/pkm/config` (or `$XDG_CONFIG_HOME/pkm/config`), and append it after a yes.
+   9. **Routines.** "Is there anything you do again and again, such as a weekly status?" For each, offer `pkm todo "<text>" --every <rule> --due <date>`, where the rule is `1w`, `1m` or a cycle name. Run it only after a yes; it writes the routines note.
 4. **Install the kit.** For each vault, after a yes, run `agd init Zejnilovic/agentic-pkms` in its folder.
 5. **Fill "This project".** Ask the owner three questions: who keeps this vault and in what role; which languages notes are written in; which folders agents must never read. Write the owner's answers in their own words into "This project" in `AGENTS.md`, after a yes. Types and keys of their own, such as an ID that several notes carry, go under "Own types and conventions" when the owner names them.
 6. **Finish.** Run `pkm -V <name> config`, `pkm -V <name> doctor` and `pkm vaults` for each vault. Ask for a first line, and record it with `pkm -V <name> add "<text>"` after a yes.

@@ -42,11 +42,13 @@ An AI agent for a personal knowledge vault: plain Markdown that you write and de
 | [`vault-search`](kit/.claude/skills/vault-search/SKILL.md) | core | Finding things in a vault too big to read: summaries first, then pkm searches. |
 | [`tasks`](kit/.claude/skills/tasks/SKILL.md) | core | Adding, finishing and planning your tasks with pkm. |
 | [`posting`](kit/.claude/skills/posting/SKILL.md) | core | Filing entries into notes, on your answers by number. |
+| [`organizing`](kit/.claude/skills/organizing/SKILL.md) | core | Making, connecting, moving and tidying notes with pkm, as one numbered proposal. |
 | [`review`](kit/.claude/skills/review/SKILL.md) | core | The brief and the close. Runs only when you ask. |
 | [`check-in`](kit/.claude/skills/check-in/SKILL.md) | core | Asking whether your notes are still true, and talking a decision through. |
 | [`pkms-init`](kit/.claude/skills/pkms-init/SKILL.md) | core | Setting up a vault with you, one question at a time. |
 | [`coaching`](kit/.claude/skills/coaching/SKILL.md) | coaching | Coaching notes, 1:1 preparation and records, feedback drafts. |
-| [`projects`](kit/.claude/skills/projects/SKILL.md) | projects | Project, application, repository and team notes, rounds over your project tools, what's new on one of them, and updates. |
+| [`projects`](kit/.claude/skills/projects/SKILL.md) | projects | Project, application, repository and team notes: setting up a project, connecting its repositories, its tasks and the portfolio. |
+| [`rounds`](kit/.claude/skills/rounds/SKILL.md) | projects | Read-only rounds over your project tools, what's new on one of them, and updates. |
 | [`writing`](kit/.claude/skills/writing/SKILL.md) | writing | Articles, guides and posts, from idea to published. |
 | [`ledger`](kit/.claude/skills/ledger/SKILL.md) | ledger | Spending in an hledger journal, and notes on things you own. |
 | [`study`](kit/.claude/skills/study/SKILL.md) | study | Quizzing you on your own notes with `pkm recall`, and proposing questions for a course. |
@@ -66,7 +68,7 @@ An AI agent for a personal knowledge vault: plain Markdown that you write and de
 |---|---|---|
 | `core` | The working agreement, the core skills and agents above | nothing: pkm is installed once per machine |
 | `coaching` | Coaching skill and coach agent | `core` |
-| `projects` | Projects skill | `core` |
+| `projects` | Projects and rounds skills | `core` |
 | `writing` | Writing skill and editor agent | `core` |
 | `ledger` | Ledger skill | `core` |
 | `study` | Study skill: courses, questions and the quiz | `core` |

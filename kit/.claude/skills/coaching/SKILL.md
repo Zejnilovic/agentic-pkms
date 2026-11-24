@@ -13,7 +13,7 @@ A coaching note is the owner's working file for one person they manage, mentor o
 
 ## The note
 
-Create it with `pkm new coaching "<name>"`. It is made in the folder that `folder_coaching` names in `.pkm/config`, such as `team/` in the work example. Its frontmatter: `relation` (`report`, `mentee` or `coachee`), `role`, `since`, `cadence` (`weekly`, `biweekly` or `monthly`), `status` (`active` or `ended`), and a link to the person. Sections: Now, Goals, Strengths, Growth areas, Actions, 1:1s, Feedback.
+Create it with `pkm new coaching "<name>" --set key=value ...`; change a value with `pkm set`. It is made in the folder that `folder_coaching` names in `.pkm/config`, such as `team/` in the work example. Its frontmatter: `relation` (`report`, `mentee` or `coachee`), `role`, `since`, `cadence` (`weekly`, `biweekly` or `monthly`), `status` (`active` or `ended`), and a link to the person. Sections: Now, Goals, Strengths, Growth areas, Actions, 1:1s, Feedback.
 
 The first time a coaching note is written, ask the owner what may be recorded and what stays out.
 
@@ -55,7 +55,7 @@ The first time a coaching note is written, ask the owner what may be recorded an
 
 - Writing anything about a performance problem, a complaint, a conflict, pay, promotion or someone leaving. Draft only, mark it sensitive, and suggest the owner checks their company's process or HR.
 - Recording something said in confidence.
-- Ending a note: set `status: ended`, add a closing Now line, and ask first.
+- Ending a note: `pkm set <name> status=ended`, add a closing Now line, and ask first.
 
 ## Check on the team
 

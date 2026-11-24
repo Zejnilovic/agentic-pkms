@@ -13,14 +13,14 @@ A piece is assembled from notes the owner already has, not written from nothing.
 
 ## The piece
 
-Create it with `pkm new writing "<working title>"`. It is one note for the piece's whole life, in the folder that `folder_writing` names (`notes/` by default). Frontmatter: `form` (`article`, `guide`, `newsletter`, `post` or `talk`), `status` (`idea`, `outline`, `draft`, `review`, `published` or `dropped`), `audience`, `venue`, `language`, `due`, `url`, and `sources` (links to the notes it uses). Sections: Idea, Outline, Draft. A translation or another form of the piece is its own note, linked from the original.
+Create it with `pkm new writing "<working title>" --set key=value ...`; move it on with `pkm set <name> status=<status>`. It is one note for the piece's whole life, in the folder that `folder_writing` names (`notes/` by default). Frontmatter: `form` (`article`, `guide`, `newsletter`, `post` or `talk`), `status` (`idea`, `outline`, `draft`, `review`, `published` or `dropped`), `audience`, `venue`, `language`, `due`, `url`, and `sources` (links to the notes it uses). Sections: Idea, Outline, Draft. A translation or another form of the piece is its own note, linked from the original.
 
 ## From idea to outline
 
 1. Write the idea first: the one thing the reader should take away. Ask the owner if it is unclear.
 2. Find material with `pkm find` and `pkm backlinks`, starting from hub notes. At most 15 candidates, each with one line on what it adds.
 3. Propose an outline: one heading per section, its point, and the notes it draws on, each linked. Name the gaps: claims that need a source the vault does not have.
-4. After a yes, add the links to `sources`, set `status: outline`, and wait for the owner's comments.
+4. After a yes, set `sources` and `status=outline` with `pkm set`, and wait for the owner's comments.
 
 ## Draft
 
@@ -34,7 +34,7 @@ Create it with `pkm new writing "<working title>"`. It is one note for the piece
 ## Review and publish
 
 - The `editor` agent reviews a draft. It does not rewrite it.
-- When published, after a yes: set `status: published`, add the `url` and the date. Notes the piece used can link back to it.
+- When published, after a yes: `pkm set <name> status=published url=<address>`, and add the date. Notes the piece used can link back to it.
 - Changes after publishing go into the same note.
 
 ## Rules

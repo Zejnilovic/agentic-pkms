@@ -1,6 +1,6 @@
 ---
 name: tasks
-description: The owner's tasks: markers for due dates, priority, waiting, start, someday, routines and whose move it is; adding, finishing, moving and dropping them with pkm; planning the day; nothing carried over. Use to add, finish, find or plan tasks, or when asked what to do today.
+description: The owner's tasks: due dates, priority, waiting, routines and whose move it is; adding, finishing, moving and dropping them with pkm; planning the day. Use to add, finish, find or plan tasks, or for what to do today.
 ---
 
 <!-- From agentic-pkms. Kit updates replace this file except a "## This project" section at the end, which belongs to the vault. Edit nothing else. Vault rules go in AGENTS.md "This project". -->
