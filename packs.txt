@@ -8,6 +8,7 @@ min-agd 0.1.0
 pack core
   AGENTS.md
   CLAUDE.md
+  .claude/settings.json
   .claude/agents/retriever.md
   .claude/agents/chief-of-staff.md
   .claude/skills/vault-search/

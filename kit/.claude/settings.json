@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(rm *)",
+      "Bash(mv *)",
+      "Bash(cp *)",
+      "Bash(sed -i*)",
+      "Bash(find *)",
+      "Bash(xargs *)",
+      "Edit(/daybook/**)",
+      "Edit(/archive/**)"
+    ]
+  }
+}

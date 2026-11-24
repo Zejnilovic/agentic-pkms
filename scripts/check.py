@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Consistency checks for the kit. Run before committing: python3 scripts/check.py
 
-Checks frontmatter, skill and agent references, links, README coverage, templates, version markers, packs,
+Checks frontmatter, skill and agent references, the guard in kit/.claude/settings.json, links, README coverage, templates, version markers, packs,
 the always-on word budget, the core skill description budget, names the kit must not use (tasks.md, inbox/,
 pkm.sh, removed skills), shell script syntax, and (when mmdc is installed) Mermaid rendering. The working
 agreement names the pkm version the kit needs, once, in a "pkm version --require <x.y>" line. With a checkout
@@ -374,6 +374,25 @@ if words > AGREEMENT_WORD_BUDGET:
     problems.append(f"kit/AGENTS.md has {words} words above 'This project', over the {AGREEMENT_WORD_BUDGET}-word budget")
 
 # Kit-owned files say so, so agents in a vault know not to edit them. Templates are exempt (see above).
+# The guard: Claude Code asks the owner before an agent deletes, moves or copies a file, or edits a day page or the
+# archive. pkm's own commands (pkm mv) start with pkm, so the rules don't catch them.
+GUARD = ["Bash(rm *)", "Bash(mv *)", "Bash(cp *)", "Bash(find *)", "Edit(/daybook/**)", "Edit(/archive/**)"]
+settings_path = KIT / ".claude/settings.json"
+if settings_path.exists():
+    import json
+    try:
+        asks = json.loads(settings_path.read_text()).get("permissions", {}).get("ask", [])
+    except json.JSONDecodeError as error:
+        problems.append(f"{rel(settings_path)}: not valid JSON: {error}")
+        asks = GUARD
+    for rule in GUARD:
+        if rule not in asks:
+            problems.append(f"{rel(settings_path)}: the guard is missing the ask rule {rule}")
+    if any(rule.startswith("Bash(pkm") for rule in asks):
+        problems.append(f"{rel(settings_path)}: no rule may ask before pkm: pkm is how the agent changes notes")
+else:
+    problems.append(f"{rel(settings_path)}: missing: it holds the guard that asks before rm, mv and edits of records")
+
 marked = [*AGENTS_DIR.glob("*.md"), *SKILLS_DIR.glob("*/SKILL.md"), *KIT.rglob("*.sh"), KIT / "AGENTS.md"]
 for path in marked:
     if MARKER not in path.read_text()[:1500]:

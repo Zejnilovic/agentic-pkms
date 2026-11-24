@@ -66,7 +66,7 @@ An AI agent for a personal knowledge vault: plain Markdown that you write and de
 
 | Pack | Contents | Requires |
 |---|---|---|
-| `core` | The working agreement, the core skills and agents above | nothing: pkm is installed once per machine |
+| `core` | The working agreement, the core skills and agents above, and the guard (`.claude/settings.json`) | nothing: pkm is installed once per machine |
 | `coaching` | Coaching skill and coach agent | `core` |
 | `projects` | Projects and rounds skills | `core` |
 | `writing` | Writing skill and editor agent | `core` |

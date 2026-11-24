@@ -441,6 +441,7 @@ The agentic Daybook doesn't assume the model is right. It makes the model's work
 | An invented fact, date or quote | Every claim needs a source, `pkm evidence --verify` checks that the source exists, and "unknown" is allowed |
 | Your words drifting as they are posted | The agent never types an entry into a note; pkm copies it character for character |
 | Too much posted, or the wrong thing | Posting is a numbered proposal; nothing is posted without your yes |
+| An agent deleting, moving or overwriting what you wrote | Notes change only through pkm, which never deletes; in Claude Code, the guard asks you before an agent runs `rm`, `mv`, `cp`, `sed -i`, `find` or `xargs`, or edits a day page or the archive |
 | A summary that slowly goes wrong | Summaries are pointers, not proof; anything that matters is read in its source, and the day wins |
 | A label that hides the facts | Issues are stated as facts with sources, never as a health colour or a score |
 | A change in a tool you didn't want | The exact command is shown first, and runs only after your yes, for that change |
@@ -510,6 +511,7 @@ Or let the agent do all of it with the **pkms-init** skill. It asks which vaults
 | Part | Kind | Pack | Where in the kit |
 |---|---|---|---|
 | Working agreement | file | core | `kit/AGENTS.md` |
+| The guard | Claude Code settings | core | `kit/.claude/settings.json` |
 | `vault-search`, `tasks`, `posting`, `organizing`, `pkms-init`, `review`, `check-in` | skills | core | `kit/.claude/skills/<name>/SKILL.md` |
 | `chief-of-staff`, `retriever` | agents | core | `kit/.claude/agents/<name>.md` |
 | `coaching`, and the `coach` agent | skill, agent | coaching | `kit/.claude/skills/coaching/`, `kit/.claude/agents/coach.md` |
