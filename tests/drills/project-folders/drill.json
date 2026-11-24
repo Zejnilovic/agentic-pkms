@@ -1,0 +1,125 @@
+{
+  "title": "Set up a project with its notes in a folder of their own",
+  "base": "tests/fixtures/vault",
+  "now": "20261124090000",
+  "gh_repos": {
+    "acme-example": [
+      {
+        "name": "apollo-api",
+        "url": "https://github.com/acme-example/apollo-api",
+        "isArchived": false,
+        "description": "Order service behind the portal"
+      },
+      {
+        "name": "hermes-api",
+        "url": "https://github.com/acme-example/hermes-api",
+        "isArchived": false,
+        "description": "Order export rewrite"
+      },
+      {
+        "name": "hermes-ui",
+        "url": "https://github.com/acme-example/hermes-ui",
+        "isArchived": false,
+        "description": "Screens for the order export"
+      },
+      {
+        "name": "acme-site",
+        "url": "https://github.com/acme-example/acme-site",
+        "isArchived": false,
+        "description": "Marketing website"
+      }
+    ]
+  },
+  "turns": [
+    "Set up a project called hermes and connect it to every acme-example GitHub repository that starts with hermes. Keep hermes.md in notes/ and all of its other notes, the kickoff note hermes-kickoff included, in notes/hermes/.",
+    "Yes, all of the rows. Status active, no target date. Skip any other question.",
+    "Yes, go ahead with all of them."
+  ],
+  "expect": {
+    "notes": {
+      "hermes": {
+        "path": "notes/hermes.md",
+        "type": "project",
+        "fields": {
+          "status": "active"
+        }
+      },
+      "hermes-api": {
+        "path": "notes/hermes/hermes-api.md",
+        "type": "repo",
+        "fields": {
+          "url": "https://github.com/acme-example/hermes-api",
+          "items": "https://github.com/acme-example/hermes-api/issues/",
+          "part_of": "hermes"
+        }
+      },
+      "hermes-ui": {
+        "path": "notes/hermes/hermes-ui.md",
+        "type": "repo",
+        "fields": {
+          "url": "https://github.com/acme-example/hermes-ui",
+          "items": "https://github.com/acme-example/hermes-ui/issues/",
+          "part_of": "hermes"
+        }
+      },
+      "hermes-kickoff": {
+        "path": "notes/hermes/hermes-kickoff.md",
+        "type": "note",
+        "fields": {
+          "part_of": "hermes"
+        }
+      }
+    },
+    "absent": [
+      "apollo-api",
+      "acme-site"
+    ],
+    "body_unchanged": [
+      "hermes-kickoff",
+      "apollo"
+    ],
+    "unchanged": [
+      "notes/jane-doe.md",
+      "notes/john-roe.md"
+    ]
+  },
+  "solution": [
+    [
+      "new",
+      "project",
+      "hermes",
+      "--set",
+      "status=active"
+    ],
+    [
+      "new",
+      "repo",
+      "--url",
+      "https://github.com/acme-example/hermes-api",
+      "--set",
+      "part_of=hermes",
+      "--folder",
+      "notes/hermes"
+    ],
+    [
+      "new",
+      "repo",
+      "--url",
+      "https://github.com/acme-example/hermes-ui",
+      "--set",
+      "part_of=hermes",
+      "--folder",
+      "notes/hermes"
+    ],
+    [
+      "set",
+      "hermes-kickoff",
+      "part_of=hermes"
+    ],
+    [
+      "mv",
+      "hermes-kickoff",
+      "notes/hermes"
+    ]
+  ]
+}

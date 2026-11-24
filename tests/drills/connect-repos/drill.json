@@ -1,0 +1,148 @@
+{
+  "title": "Connect a project to its repositories by prefix",
+  "base": "tests/fixtures/vault",
+  "now": "20261124090000",
+  "gh_repos": {
+    "acme-example": [
+      {
+        "name": "apollo",
+        "url": "https://github.com/acme-example/apollo",
+        "isArchived": false,
+        "description": "Monorepo of the Acme customer portal"
+      },
+      {
+        "name": "apollo-api",
+        "url": "https://github.com/acme-example/apollo-api",
+        "isArchived": false,
+        "description": "Order service behind the portal"
+      },
+      {
+        "name": "apollo-web",
+        "url": "https://github.com/acme-example/apollo-web",
+        "isArchived": false,
+        "description": "Portal front end in TypeScript"
+      },
+      {
+        "name": "apollo-docs",
+        "url": "https://github.com/acme-example/apollo-docs",
+        "isArchived": false,
+        "description": "Handbook site for portal users"
+      },
+      {
+        "name": "apollo-legacy",
+        "url": "https://github.com/acme-example/apollo-legacy",
+        "isArchived": true,
+        "description": "The first portal, retired in 2025"
+      },
+      {
+        "name": "hermes-api",
+        "url": "https://github.com/acme-example/hermes-api",
+        "isArchived": false,
+        "description": "Order export rewrite"
+      },
+      {
+        "name": "acme-site",
+        "url": "https://github.com/acme-example/acme-site",
+        "isArchived": false,
+        "description": "Marketing website"
+      }
+    ]
+  },
+  "turns": [
+    "Connect the apollo project to every repository in the acme-example GitHub organization whose name starts with apollo.",
+    "Yes, all of the rows. Leave the archived ones out. Skip any other question.",
+    "Yes, go ahead with all of them."
+  ],
+  "expect": {
+    "notes": {
+      "apollo-repo": {
+        "path": "notes/apollo-repo.md",
+        "type": "repo",
+        "fields": {
+          "url": "https://github.com/acme-example/apollo",
+          "items": "https://github.com/acme-example/apollo/issues/",
+          "part_of": "apollo"
+        }
+      },
+      "apollo-api": {
+        "path": "notes/apollo-api.md",
+        "type": "repo",
+        "fields": {
+          "url": "https://github.com/acme-example/apollo-api",
+          "items": "https://github.com/acme-example/apollo-api/issues/",
+          "part_of": "apollo"
+        }
+      },
+      "apollo-web": {
+        "path": "notes/apollo-web.md",
+        "type": "repo",
+        "fields": {
+          "url": "https://github.com/acme-example/apollo-web",
+          "items": "https://github.com/acme-example/apollo-web/issues/",
+          "part_of": "apollo"
+        }
+      },
+      "apollo-docs": {
+        "path": "notes/apollo-docs.md",
+        "type": "repo",
+        "fields": {
+          "url": "https://github.com/acme-example/apollo-docs",
+          "part_of": "apollo"
+        }
+      },
+      "apollo": {
+        "path": "notes/apollo.md",
+        "type": "project",
+        "fields": {
+          "status": "active"
+        }
+      }
+    },
+    "absent": [
+      "apollo-legacy",
+      "hermes-api",
+      "acme-site"
+    ],
+    "body_unchanged": [
+      "apollo",
+      "apollo-docs"
+    ],
+    "unchanged": [
+      "notes/jane-doe.md",
+      "notes/john-roe.md"
+    ]
+  },
+  "solution": [
+    [
+      "new",
+      "repo",
+      "--url",
+      "https://github.com/acme-example/apollo",
+      "--name",
+      "apollo-repo",
+      "--set",
+      "part_of=apollo"
+    ],
+    [
+      "new",
+      "repo",
+      "--url",
+      "https://github.com/acme-example/apollo-api",
+      "--set",
+      "part_of=apollo"
+    ],
+    [
+      "new",
+      "repo",
+      "--url",
+      "https://github.com/acme-example/apollo-web",
+      "--set",
+      "part_of=apollo"
+    ],
+    [
+      "set",
+      "apollo-docs",
+      "part_of=apollo"
+    ]
+  ]
+}

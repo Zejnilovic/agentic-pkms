@@ -9,7 +9,9 @@ Needs pkm; see the agreement.
 
 # Organizing notes
 
-pkm makes, changes and moves notes. You decide what to propose, the owner says yes, and pkm writes. Never create a note file, edit frontmatter or move a file yourself: a command that refuses is the answer, not something to work around.
+pkm makes, changes and moves notes. You decide what to propose, the owner says yes, and pkm writes. Never create a note file, edit frontmatter, or make or move a folder or file yourself (`mkdir`, `mv`): pkm makes the folders it needs, and a command that refuses is the answer, not something to work around.
+
+**A request is not a yes.** "Set up orion", "connect it" or "move them" asks for the proposal. Show the table and stop. Nothing is written until the owner answers the table.
 
 ## The commands
 
@@ -28,35 +30,36 @@ pkm makes, changes and moves notes. You decide what to propose, the owner says y
 ## Names, types and trees
 
 - **One note per thing.** Before proposing a note, run `pkm path <name>`. If it exists, propose `pkm set` for what is missing instead.
-- **Names** are lowercase words joined by hyphens, from the title. A thing from a tool keeps its own name: the repository `project-v9-api` is the note `project-v9-api`.
-- **A clash** (pkm says the name is taken): qualify the new name by its type, `--name <name>-<type>`, such as `project-v9-repo` next to the project `project-v9`. Never rename the existing note to make room.
+- **Names** are lowercase words joined by hyphens, from the title. A thing from a tool keeps its own name: the repository `orion-api` is the note `orion-api`.
+- **A clash** (pkm says the name is taken): qualify the new name by its type, `--name <name>-<type>`, such as `orion-repo` next to the project `orion`. Never rename the existing note to make room.
 - **The type** is the first word of `pkm new`. Use a type `pkm templates` lists. A new type of the owner's goes in AGENTS.md "This project" first.
-- **part_of** names the one note a note belongs to. The owner's words decide it: "connect them to project-v9" is `part_of=project-v9`. Make the parent first; pkm refuses a `part_of` that names no note.
+- **part_of** names the one note a note belongs to. The owner's words decide it: "connect them to orion" is `part_of=orion`. Make the parent first; pkm refuses a `part_of` that names no note.
 - **Values** come from the owner or from an address they gave. Write "unknown" nowhere in frontmatter: leave a key empty instead. A tool's own text, such as a repository's description, is not copied.
 
 ## Folders
 
 - **Default**: notes sit in `notes/`, or in a type's `folder_<type>`. Links name the note, so a folder never matters to pkm.
-- **Project folders**: when `pkm config` shows `part_of_folders=yes`, pkm puts each note in a folder named after its parent: the hub stays at `notes/project-v9.md`, and its notes go in `notes/project-v9/`. Don't pass `--folder` then; pkm places them.
+- **Project folders**: when `pkm config` shows `part_of_folders=yes`, pkm puts each note in a folder named after its parent: the hub stays at `notes/orion.md`, and its notes go in `notes/orion/`. Don't pass `--folder` then; pkm places them.
 - **The owner asks for that layout** and the setting is `no`: propose the line `part_of_folders=yes` for `.pkm/config`, append it after a yes, then run `pkm check`. Its notices list each note outside its parent's folder with the `pkm mv` that moves it; propose those moves as rows.
 - **A folder the owner names**, such as `notes/clients/`: `--folder <folder>` on `pkm new`, `pkm mv` for existing notes.
+- **A note that goes in a project's folder is part of the project**: give it `part_of=<project>` as well. A folder alone links nothing, so `pkm list --under` and `pkm overview` would miss it.
 
 ## Steps
 
-1. **The ask in one line**: the top note, the notes under it, the layout. Example: "project-v9, its 6 repositories, in notes/project-v9/".
+1. **The ask in one line**: the top note, the notes under it, the layout. Example: "orion, its 6 repositories, in notes/orion/".
 2. **Look** before proposing: `pkm config`, `pkm path <top>`, `pkm list --under <top>`, and `pkm names --type <type>` for the kinds involved. Things from a tool, such as repositories, are listed with the tool, read only (the `projects` skill has the commands).
 3. **Propose** one numbered table, parents first, at most 30 rows. Each row is one pkm command and the path it gives:
 
    ```text
    | # | Action | Note | Command | Path |
    |---|---|---|---|---|
-   | 1 | new | project-v9 | pkm new project "project-v9" --set status=active | notes/project-v9.md |
-   | 2 | new | project-v9-api | pkm new repo --url https://github.com/acme-example/project-v9-api --set part_of=project-v9 | notes/project-v9/project-v9-api.md |
-   | 3 | set | kickoff-notes | pkm set kickoff-notes part_of=project-v9 | notes/project-v9/kickoff-notes.md |
+   | 1 | new | orion | pkm new project "orion" --set status=active | notes/orion.md |
+   | 2 | new | orion-api | pkm new repo --url https://github.com/acme-example/orion-api --set part_of=orion | notes/orion/orion-api.md |
+   | 3 | set | kickoff-notes | pkm set kickoff-notes part_of=orion | notes/orion/kickoff-notes.md |
    ```
 
    Below it, say what you leave out and why, such as archived repositories or notes that already exist.
-4. **Wait** for the owner's yes, or for the numbers they accept.
+4. **Stop and wait** for the owner's yes, or for the numbers they accept. Run nothing that writes before it, however the request was worded.
 5. **Run** the accepted rows in order, one command each. If one fails, stop: give its message, and propose a fixed row.
 6. **Check**: run `pkm check`. Fix what you caused, with the commands above, after a yes. Report the other problems.
 7. **Report**: each file created, changed or moved, by path, then `pkm list --under <top>`.

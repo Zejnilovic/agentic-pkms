@@ -9,6 +9,8 @@ Needs pkm; see the agreement. Proposals, folders and clean-ups follow the `organ
 
 # Projects
 
+Setting up, connecting and moving are proposals: show the rows, stop, and run them only after the owner answers. The request itself is not the yes.
+
 The owner's notes hold their overview: what a thing is, its Now, decisions and links. The work lives in its tools. The notes link them and never copy their items. Facts only: no health, status colours or scores.
 
 ## The notes
@@ -28,16 +30,21 @@ Keys of the vault's own, such as an ID that several notes carry, are named in AG
 
 ## Set up a project
 
-For "set up project-v9":
+For "set up orion":
 
-1. Run `pkm path project-v9`. If the note exists, show its frontmatter with `pkm get project-v9 --lines 1-12` and propose only `pkm set` rows for what is missing.
+1. Run `pkm path orion`. If the note exists, show its frontmatter with `pkm get orion --lines 1-12` and propose only `pkm set` rows for what is missing.
 2. Ask at most three questions, each with an example, and accept "skip": its status (`active`), its target date, and the application or area it is `part_of`, if any. The summary is the owner's words, or left empty.
-3. Propose the row: `pkm new project "project-v9" --set status=active --set target=2027-03-31`. A parent must exist first: propose it as an earlier row.
-4. After a yes, run it, then offer to connect its repositories and its board (below).
+3. Propose the row: `pkm new project "orion" --set status=active --set target=2027-03-31`. A parent must exist first: propose it as an earlier row.
+   Each note the owner names as the project's, such as a kickoff note, is a row too: `pkm set <note> part_of=<project>`. A note moved into the project's folder without `part_of` is not part of it.
+4. Stop there: show the rows and wait. After a yes, run them, then offer to connect its repositories and its board (below). When the owner asked for both in one request, propose the project and its repositories in one table.
+
+## Project folders
+
+When the owner wants the project's notes in a folder of their own (`notes/<project>.md` and the rest in `notes/<project>/`), and `pkm config` shows `part_of_folders=no`, make row 1 the line `part_of_folders=yes`, appended to `.pkm/config`. Then pkm puts every note with `part_of=<project>` in that folder itself, and `pkm set <note> part_of=<project>` moves an existing one. No `--folder`, `mkdir` or `pkm mv` is needed.
 
 ## Connect repositories
 
-For "connect project-v9 to every repository that starts with project-v9":
+For "connect orion to every repository that starts with orion":
 
 1. **What to match**, from the owner's words: the owner or organization, and a prefix, a topic or a list of names. If the organization is missing, ask for it, with an example (`acme-example`).
 2. **List them**, read only:

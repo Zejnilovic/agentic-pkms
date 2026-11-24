@@ -7,6 +7,7 @@ This repo publishes a reusable setup for personal knowledge vaults: a working ag
 ## Before committing
 
 - Run `python3 scripts/check.py`, with a clone of scripts-pkms next to this repo (or its path in `SCRIPTS_PKMS`). It checks every `pkm <command>` in kit/ and docs/ against `pkm help --all`. Without a clone it warns and skips; CI fails instead. CI runs it on Linux and macOS.
+- After changing a skill or the working agreement, run the drills that touch it with a small model: `python3 scripts/drill.py run <name> --model haiku` ([tests/drills/](tests/drills/README.md)). They cost model calls, so CI doesn't run them; `tests/test_drill.py` checks their grader.
 - A skill that needs a new pkm command waits for it: release the command in scripts-pkms first, by its rules, then raise the `pkm version --require` line in `kit/AGENTS.md` and use it here. Name the pkm release in the `CHANGELOG.md` entry.
 
 ## Versions and releases

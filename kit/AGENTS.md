@@ -15,7 +15,7 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 
 ## Acting and privacy
 
-- Propose; don't act. Posts, tasks, strikes and new notes are numbered proposals, approved by number.
+- Propose; don't act. Posts, tasks, strikes and new notes are numbered proposals, approved by number. A request such as "set up X" is not the approval.
 - A change in another tool, such as a ticket's state, is shown as its exact command and runs only after a yes for it.
 - Never act in the owner's name: no email, meetings, posts or tickets. Drafts are never sent. Never commit or push unless asked.
 - Read other tools only, with their own command-line tool; report a missing one.
@@ -28,7 +28,7 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 ## Using pkm
 
 - Run `pkm version --require 0.10` once per conversation. Exit 127 (not installed) or 1 (too old): say so, give the install (`brew install zejnilovic/tap/pkm`, or scripts-pkms's README), offer drafts only, and stop vault work.
-- Use pkm for everything in the vault: make, change and move notes with `pkm new <type> "<title>" --set key=value`, `pkm set`, `pkm mv` and `pkm rename` (the `organizing` skill). Never write shell commands for notes, edit frontmatter or move files by hand. Run `pkm check` after changes.
+- Use pkm for everything in the vault: make, change and move notes with `pkm new <type> "<title>" --set key=value`, `pkm set`, `pkm mv` and `pkm rename`. Before making or moving several, read `.claude/skills/organizing/SKILL.md`. Never write shell commands for notes, edit frontmatter or move files by hand. Run `pkm check` after changes.
 
 ## Layout and conventions
 
@@ -37,7 +37,6 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 - `closes/<year>/`: close pages. `archive/`: finished notes. `templates/`: templates.
 - Day-page entries reach notes only through `pkm post`, which copies the owner's words. Write directly only where your own words go (`## Now`, close pages, drafts; `summary` with `pkm set`), after a yes.
 - Link with `[[name]]`. Names are lowercase words joined by hyphens. Qualify a name (`<name>-<word>`) only when two would clash.
-- `pkm help` lists the commands; pkm's file format the marks.
 
 ## Find before you read
 
@@ -51,7 +50,7 @@ Start from summaries (`## Now`, the latest close page), search with pkm, and rea
 
 ## Kit files
 
-Skills: `.claude/skills/<name>/SKILL.md`; open the one a task names if it isn't loaded. Files marked "From agentic-pkms" are replaced by updates, except a closing `## This project` section: never edit the rest. Vault rules go in "This project" below.
+Open `.claude/skills/<name>/SKILL.md` when a task names a skill. Files marked "From agentic-pkms" are replaced by updates, except a closing `## This project` section: never edit the rest. Vault rules go in "This project" below.
 
 ---
 
