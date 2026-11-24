@@ -27,14 +27,14 @@ A personal knowledge vault of plain Markdown that its owner writes. Vault facts 
 
 ## Using pkm
 
-- Run `pkm version --require 0.10` once per conversation. Exit 127 (not installed) or 1 (too old): say so, give the install (`brew install zejnilovic/tap/pkm`, or scripts-pkms's README), offer drafts only, and stop vault work.
-- Use pkm for everything in the vault: make, change and move notes with `pkm new <type> "<title>" --set key=value`, `pkm set`, `pkm mv` and `pkm rename`. Before making or moving several, read `.claude/skills/organizing/SKILL.md`. Never write shell commands for notes, edit frontmatter or move files by hand. Run `pkm check` after changes.
+- Run `pkm version --require 0.11` once per conversation. Exit 127 (not installed) or 1 (too old): say so, give `brew install zejnilovic/tap/pkm`, `brew upgrade pkm` or scripts-pkms's README, offer drafts only, and stop vault work.
+- Use pkm for everything in the vault: make, change and move notes with `pkm new <type> "<title>" --set key=value`, `pkm set`, `pkm mv` and `pkm rename`. Before making or moving several, read `.claude/skills/organizing/SKILL.md`. Never run `ls`, `cat`, `find` or `grep` on notes, edit frontmatter or settings, or move files by hand.
 
 ## Layout and conventions
 
 - `daybook/<year>/<month>/`: day pages. A day page is a record: tick a task, fix a link or strike a line, nothing else.
 - `notes/`: notes, one idea each, and the names of people, projects and things. pkm picks the folder.
-- `closes/<year>/`: close pages. `archive/`: finished notes. `templates/`: templates.
+- `closes/<year>/`: close pages. `archive/`: finished notes.
 - Day-page entries reach notes only through `pkm post`, which copies the owner's words. Write directly only where your own words go (`## Now`, close pages, drafts; `summary` with `pkm set`), after a yes.
 - Link with `[[name]]`. Names are lowercase words joined by hyphens. Qualify a name (`<name>-<word>`) only when two would clash.
 

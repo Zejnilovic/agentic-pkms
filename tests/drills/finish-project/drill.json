@@ -1,0 +1,76 @@
+{
+  "title": "Finish a project: archive what ends with it, move what lives on to its application",
+  "base": "tests/fixtures/vault",
+  "now": "20261124090000",
+  "gh_repos": {},
+  "turns": [
+    "Hermes is done. Finish it: the kickoff note goes to the archive with it, but the hermes-api repository lives on under the Acme Portal application.",
+    "Yes, all of the rows. Status done. Skip any other question.",
+    "Yes, go ahead with all of them."
+  ],
+  "expect": {
+    "notes": {
+      "hermes": {
+        "path": "archive/hermes.md",
+        "type": "project",
+        "fields": {
+          "status": "done"
+        }
+      },
+      "hermes-kickoff": {
+        "path": "archive/hermes-kickoff.md",
+        "type": "note"
+      },
+      "hermes-api": {
+        "path": "notes/acme-portal/hermes-api.md",
+        "type": "repo",
+        "fields": {
+          "part_of": "acme-portal",
+          "url": "https://github.com/acme-example/hermes-api"
+        }
+      },
+      "acme-portal": {
+        "path": "notes/acme-portal.md",
+        "type": "app"
+      }
+    },
+    "absent": [],
+    "body_unchanged": [
+      "hermes",
+      "hermes-kickoff",
+      "hermes-api",
+      "acme-portal"
+    ],
+    "unchanged": [
+      "notes/jane-doe.md",
+      "notes/john-roe.md",
+      "notes/apollo.md"
+    ],
+    "notices_absent": [
+      "which is in archive/",
+      "belongs in"
+    ]
+  },
+  "solution": [
+    [
+      "set",
+      "hermes",
+      "status=done"
+    ],
+    [
+      "mv",
+      "hermes-kickoff",
+      "archive"
+    ],
+    [
+      "set",
+      "hermes-api",
+      "part_of=acme-portal"
+    ],
+    [
+      "mv",
+      "hermes",
+      "archive"
+    ]
+  ]
+}

@@ -16,14 +16,14 @@ Ask one question at a time, with an example answer. Accept "skip". Show every li
 1. **Check the tools.** Run `pkm version --require <x.y>` with the version the agreement names, then `pkm doctor`. If pkm is missing (exit 127) or too old (exit 1), stop and give the install line: `brew install zejnilovic/tap/pkm`, or without Homebrew, `make install` in a clone of scripts-pkms (its README). If doctor names a missing tool, stop and name it. Go on only when both pass.
 2. **Ask which vaults.** "Which vaults do you want, for example work, personal or family? Give a name for each." For each name, ask where it lives: "Which folder is work in, for example `~/vaults/work`?"
 3. **For each vault, in order:**
-   1. **Existing setup.** If the folder has `.pkm/`, say so, read `.pkm/config`, and offer only the missing settings. Never work around `pkm init`.
+   1. **Existing setup.** If the folder has `.pkm/`, say so, run `pkm config`, and offer only the missing settings. Never work around `pkm init`.
    2. **Create it.** After a yes: `mkdir -p <folder>`, then `cd <folder> && pkm init`. It writes `.pkm/config`, `.pkm/.gitignore` and `.pkmignore`.
-   3. **Shared?** "Do others write here, as in a family vault?" If yes, ask the owner's writer name, for example `sam`. Show `writer=sam` for the user config, and append it there.
-   4. **Close cycle.** "Do you close each week? Say week, or a cycle such as `sprint 2w from 2026-11-02` (a cycle longer than a week starts from a date) or `payday 1m from 25`." Show `close=<name>` and each `cycle_<name>=...` line for `.pkm/config`, and append after a yes.
+   3. **Shared?** "Do others write here, as in a family vault?" If yes, ask the owner's writer name, for example `sam`, and after a yes run `pkm config shared yes` and `pkm config writer sam` (the second goes to the user config).
+   4. **Close cycle.** "Do you close each week? Say week, or a cycle such as `sprint 2w from 2026-11-02` (a cycle longer than a week starts from a date) or `payday 1m from 25`." Show the commands, `pkm config cycle_<name> "<rule>"` for each cycle and `pkm config close <name>`, and run them after a yes.
    5. **Ignored files.** "What should pkm not see, for example `scans/` or `*.pdf`?" Show the lines and append them to `.pkmignore` after a yes.
-   6. **Project folders.** "Should a project's notes sit together in a folder, such as `notes/apollo/` next to `notes/apollo.md`?" Default no: links work either way. If yes, append `part_of_folders=yes` to `.pkm/config`.
-   7. **Cross-vault read.** "May an agent read this vault from another vault, for a brief across them?" Default no; a work vault usually stays no. If yes, append `cross_vault=yes` to `.pkm/config`.
-   8. **Vault name.** Show `vault_<name>=<folder>` for `~/.config/pkm/config` (or `$XDG_CONFIG_HOME/pkm/config`), and append it after a yes.
+   6. **Project folders.** "Should a project's notes sit together in a folder, such as `notes/apollo/` next to `notes/apollo.md`?" Default no: links work either way. If yes, run `pkm config part_of_folders yes`.
+   7. **Cross-vault read.** "May an agent read this vault from another vault, for a brief across them?" Default no; a work vault usually stays no. If yes, run `pkm config cross_vault yes`.
+   8. **Vault name.** Show `pkm config vault_<name> <folder>`, which writes the user config, and run it after a yes.
    9. **Routines.** "Is there anything you do again and again, such as a weekly status?" For each, offer `pkm todo "<text>" --every <rule> --due <date>`, where the rule is `1w`, `1m` or a cycle name. Run it only after a yes; it writes the routines note.
 4. **Install the kit.** For each vault, after a yes, run `agd init Zejnilovic/agentic-pkms` in its folder.
 5. **Fill "This project".** Ask the owner three questions: who keeps this vault and in what role; which languages notes are written in; which folders agents must never read. Write the owner's answers in their own words into "This project" in `AGENTS.md`, after a yes. Types and keys of their own, such as an ID that several notes carry, go under "Own types and conventions" when the owner names them.
@@ -32,7 +32,7 @@ Ask one question at a time, with an example answer. Accept "skip". Show every li
 
 ## Rules
 
-- Never overwrite a file. Create files only with `pkm init`; add settings by appending.
+- Never overwrite a file. Create files only with `pkm init`; set settings only with `pkm config <key> <value>`.
 - Write nothing without a yes, and show each line first.
 - Put no secrets in any file: no passwords, keys, tokens, or card or account numbers. If the owner offers one, refuse it and say why.
 - The user config holds `writer=` and `vault_<name>=`. A vault's `.pkm/config` never holds `writer=`.

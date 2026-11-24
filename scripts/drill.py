@@ -186,8 +186,8 @@ def check(name, run):
     expect = drill["expect"]
     results = []
 
-    def record(ok, label, detail=""):
-        results.append({"ok": bool(ok), "check": label, "detail": detail})
+    def record(ok, label, detail="", warn=False):
+        results.append({"ok": bool(ok), "check": label, "detail": detail, "warn": warn})
 
     turn1 = run / "turn1.json"
     if turn1.exists():
@@ -202,13 +202,15 @@ def check(name, run):
         if len(found) != 1:
             record(False, f"{note}: one note", f"found {found or 'none'}")
             continue
-        record(found[0] == want["path"], f"{note}: at {want['path']}", found[0])
+        places = want["path"] if isinstance(want["path"], list) else [want["path"]]
+        record(found[0] in places, f"{note}: at {' or '.join(places)}", found[0])
         fields, _ = frontmatter((vault / found[0]).read_text())
         if "type" in want:
             record(fields.get("type") == want["type"], f"{note}: type {want['type']}", fields.get("type", "none"))
         for key, value in want.get("fields", {}).items():
             got = fields.get(key, "")
-            record(bare(got) == value, f"{note}: {key} {value}", got or "empty")
+            same = bare(got) == value or (key == "url" and re.sub(r"(\.git)?/*$", "", bare(got)) == value)
+            record(same, f"{note}: {key} {value}", got or "empty")
 
     for note in expect.get("absent", []):
         record(note not in paths, f"no note {note}", ", ".join(paths.get(note, [])))
@@ -216,6 +218,8 @@ def check(name, run):
     urls = {}
     for note, found in paths.items():
         for rel in found:
+            if rel.startswith("archive/"):
+                continue
             url = frontmatter((vault / rel).read_text())[0].get("url")
             if url:
                 urls.setdefault(url.rstrip("/"), []).append(note)
@@ -230,7 +234,7 @@ def check(name, run):
     base_vault = REPO / drill["base"]
     overlay = DRILLS / name / "vault"
     for note in expect.get("body_unchanged", []):
-        before = next((p for p in [overlay / "notes" / f"{note}.md", base_vault / "notes" / f"{note}.md"] if p.exists()), None)
+        before = next((p for folder in (overlay, base_vault) if folder.exists() for p in sorted(folder.rglob(f"{note}.md"))), None)
         found = paths.get(note, [])
         if before is None or len(found) != 1:
             record(False, f"{note}: the owner's text unchanged", "note missing")
@@ -253,13 +257,48 @@ def check(name, run):
                                env=environment(run, drill))
     problems = pkm_check.stdout.split("Problems:")[1].split("Notices:")[0].strip() if "Problems:" in pkm_check.stdout else ""
     record(pkm_check.returncode == 0, "pkm check finds no problems", problems.replace("\n", " "))
+    notices = pkm_check.stdout.split("Notices:")[1] if "Notices:" in pkm_check.stdout else ""
+    for words in expect.get("notices_absent", []):
+        left = [line for line in notices.splitlines() if words in line]
+        record(not left, f"pkm check has no notice with \"{words}\"", " ".join(left))
 
-    failed = [r for r in results if not r["ok"]]
+    transcript = run / "transcript.json"
+    if transcript.exists():
+        outside = looked_outside_pkm(json.loads(transcript.read_text()))
+        record(not outside, "looked at the vault with pkm only", f"{len(outside)} times, such as: {outside[0][:120]}" if outside else "",
+               warn=True)
+
+    graded = [r for r in results if not r["warn"]]
+    failed = [r for r in graded if not r["ok"]]
     for r in results:
-        print(f"{'PASS' if r['ok'] else 'FAIL'}  {r['check']}" + (f"  ({r['detail']})" if r["detail"] and not r["ok"] else ""))
-    print(f"\n{name}: {len(results) - len(failed)}/{len(results)} checks passed.")
+        mark = "PASS" if r["ok"] else ("WARN" if r["warn"] else "FAIL")
+        print(f"{mark}  {r['check']}" + (f"  ({r['detail']})" if r["detail"] and not r["ok"] else ""))
+    warned = sum(1 for r in results if r["warn"] and not r["ok"])
+    print(f"\n{name}: {len(graded) - len(failed)}/{len(graded)} checks passed" + (f", {warned} warning." if warned else "."))
     (run / "result.json").write_text(json.dumps(results, indent=2))
     return len(failed)
+
+
+READERS = {"ls", "cat", "find", "grep", "rg", "head", "tail", "sed", "awk", "less", "tree"}
+KIT_FILES = (".claude/", "AGENTS.md", "CLAUDE.md", ".pkm/", "gh-data.json")
+
+
+def looked_outside_pkm(log):
+    """The tool calls that read the vault without pkm: ls, cat, find and the like in Bash, and the Read, Grep and
+    Glob tools, except on the kit's own files and pkm's settings."""
+    found = []
+    for turn in log:
+        for tool in turn.get("tools", []):
+            name, _, rest = tool.partition(": ")
+            if name == "Bash":
+                for part in re.split(r"&&|\|\||;", rest):
+                    part = part.split("|")[0]  # what a pipe feeds into only filters
+                    words = part.strip().lstrip("(").split()
+                    if words and words[0] in READERS and not any(k in part for k in KIT_FILES):
+                        found.append(part.strip())
+            elif name in ("Read", "Grep", "Glob") and not any(k in rest for k in KIT_FILES):
+                found.append(tool)
+    return found
 
 
 def claude_turn(text, run, drill, model, session):

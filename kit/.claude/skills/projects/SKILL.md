@@ -40,7 +40,7 @@ For "set up orion":
 
 ## Project folders
 
-When the owner wants the project's notes in a folder of their own (`notes/<project>.md` and the rest in `notes/<project>/`), and `pkm config` shows `part_of_folders=no`, make row 1 the line `part_of_folders=yes`, appended to `.pkm/config`. Then pkm puts every note with `part_of=<project>` in that folder itself, and `pkm set <note> part_of=<project>` moves an existing one. No `--folder`, `mkdir` or `pkm mv` is needed.
+When the owner wants the project's notes in a folder of their own (`notes/<project>.md` and the rest in `notes/<project>/`), and `pkm config` shows `part_of_folders=no`, make row 1 `pkm config part_of_folders yes`. Then pkm puts every note with `part_of=<project>` in that folder itself, and `pkm set <note> part_of=<project>` moves an existing one. No `--folder`, `mkdir` or `pkm mv` is needed.
 
 ## Connect repositories
 

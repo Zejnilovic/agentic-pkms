@@ -1,0 +1,102 @@
+{
+  "title": "Tidy what another assistant left: a doubled repository, a missing type, missing parents and a person filed under a project",
+  "base": "tests/fixtures/vault",
+  "now": "20261124090000",
+  "gh_repos": {},
+  "turns": [
+    "Another assistant made a mess of the apollo notes. Tidy them up.",
+    "Keep apollo-api, the one with my text, and archive apollo-api-repo. Yes to the other tidy-up rows; leave everything else as it is. Skip any other question.",
+    "Yes, go ahead with all of them."
+  ],
+  "expect": {
+    "notes": {
+      "apollo-api": {
+        "path": "notes/apollo-api.md",
+        "type": "repo",
+        "fields": {
+          "url": "https://github.com/acme-example/apollo-api",
+          "items": "https://github.com/acme-example/apollo-api/issues/",
+          "part_of": "apollo"
+        }
+      },
+      "apollo-api-repo": {
+        "path": "archive/apollo-api-repo.md",
+        "type": "repo"
+      },
+      "apollo-web": {
+        "path": [
+          "notes/apollo/apollo-web.md",
+          "notes/apollo-web.md"
+        ],
+        "type": "repo",
+        "fields": {
+          "part_of": "apollo"
+        }
+      },
+      "apollo-meeting-notes": {
+        "path": "notes/apollo-meeting-notes.md",
+        "fields": {
+          "part_of": "apollo"
+        }
+      },
+      "jane-doe": {
+        "path": "notes/jane-doe.md",
+        "type": "person",
+        "fields": {
+          "part_of": ""
+        }
+      },
+      "apollo": {
+        "path": "notes/apollo.md",
+        "type": "project",
+        "fields": {
+          "status": "active"
+        }
+      }
+    },
+    "absent": [],
+    "body_unchanged": [
+      "apollo-api",
+      "apollo-meeting-notes",
+      "apollo",
+      "jane-doe"
+    ],
+    "unchanged": [
+      "notes/john-roe.md"
+    ],
+    "notices_absent": [
+      "is the url of",
+      "which is in archive/"
+    ]
+  },
+  "solution": [
+    [
+      "set",
+      "apollo-api",
+      "type=repo",
+      "url=https://github.com/acme-example/apollo-api",
+      "items=https://github.com/acme-example/apollo-api/issues/",
+      "part_of=apollo"
+    ],
+    [
+      "mv",
+      "apollo-api-repo",
+      "archive"
+    ],
+    [
+      "set",
+      "apollo-web",
+      "part_of=apollo"
+    ],
+    [
+      "set",
+      "apollo-meeting-notes",
+      "part_of=apollo"
+    ],
+    [
+      "set",
+      "jane-doe",
+      "part_of="
+    ]
+  ]
+}

@@ -98,5 +98,12 @@ class Messes(DrillCase):
         self.assertIn("apollo: the owner's text unchanged", self.grade())
 
 
+class LookedOutsidePkm(unittest.TestCase):
+    def test_shell_reads_and_file_tools_on_notes_count_and_kit_files_dont(self):
+        log = [{"tools": ["Bash: pkm path apollo; cat notes/apollo.md", "Bash: cat AGENTS.md", "Read: /v/notes/apollo.md",
+                          "Read: /v/.claude/skills/organizing/SKILL.md", "Bash: find . -type f | head", "Bash: pkm check"]}]
+        self.assertEqual(drill.looked_outside_pkm(log), ["cat notes/apollo.md", "Read: /v/notes/apollo.md", "find . -type f"])
+
+
 if __name__ == "__main__":
     unittest.main()

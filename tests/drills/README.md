@@ -6,6 +6,8 @@ A drill tries the kit with a real assistant on a made-up vault and grades what i
 |---|---|
 | `connect-repos` | Connect the project `apollo` to every `acme-example` repository whose name starts with `apollo`: one name clashes with the project, one repository already has a note, one is archived |
 | `project-folders` | Set up the project `hermes`, connect its repositories, and keep `hermes.md` in `notes/` and its other notes, an existing kickoff note included, in `notes/hermes/` |
+| `tidy-mess` | Tidy what another assistant left: two notes for one repository, a repository note typed `note` with a trailing `/` on its address, notes without `part_of`, and a person filed under the project |
+| `finish-project` | Finish `hermes`: its kickoff note goes to the archive with it, and its repository moves to the application that outlives it |
 
 ## Running one
 
@@ -33,10 +35,11 @@ It prints the vault, the `PATH` to set in its terminal, and the turns. Open the 
 - **The owner's words**: day pages and the listed notes are unchanged; a note's text below its frontmatter is unchanged.
 - **Nothing from the tool**: no repository description in any note.
 - **Moves through pkm**: a note that moved is in `.pkm/moves.tsv`.
-- **`pkm check`** finds no problems.
+- **`pkm check`** finds no problems, and none of the notices a drill names (`notices_absent`), such as two notes with one address.
+- **pkm only**, a warning rather than a failure (in a `run`, from its tool calls): the vault was read with pkm, never with `ls`, `cat`, `find`, `grep` or the assistant's own file tools; the kit's files and `.pkm/` don't count.
 
 `tests/test_drill.py` checks the grader without a model: each drill's `solution` (the pkm commands that solve it) passes, and the usual messes fail.
 
 ## Adding one
 
-Make `tests/drills/<name>/drill.json` with `title`, `base`, `now` (pkm's clock), `gh_repos` (the fake `gh`'s organizations and repositories), `turns`, `expect` (`notes`, `absent`, `unchanged` paths and `body_unchanged` names) and `solution`, and put any extra vault files in `tests/drills/<name>/vault/`. Use made-up names only. Keep the kit's examples different from a drill's names, so a skill never hands a model the answer.
+Make `tests/drills/<name>/drill.json` with `title`, `base`, `now` (pkm's clock), `gh_repos` (the fake `gh`'s organizations and repositories), `turns`, `expect` (`notes`, each with one `path` or a list of allowed ones, `absent`, `unchanged` paths, `body_unchanged` names and `notices_absent`) and `solution`, and put any extra vault files in `tests/drills/<name>/vault/`. Use made-up names only. Keep the kit's examples different from a drill's names, so a skill never hands a model the answer.

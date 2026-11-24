@@ -484,6 +484,7 @@ No study has measured whether an agent makes a personal note system better kept 
 | `pkm moved <path:line> <when>` | A task or an event whose date changed: struck, and written again with the new date |
 | `pkm new <type> <title> --set key=value` | Makes a note from its template with its frontmatter filled; `pkm new repo --url <address>` fills a repository's |
 | `pkm set <note> key=value` | Changes frontmatter, such as `part_of` or `status`, so nothing is edited by hand |
+| `pkm config <key> <value>` | Sets a setting, such as `pkm config part_of_folders yes` |
 | `pkm mv <note> ... <folder>` | Moves notes into a folder, or a finished one to the archive, keeping names and links |
 | `pkm post <path:line> <note>#<section>` | Copies an entry into a note, word for word, with its day |
 | `pkm strike <path:line>` | Strikes a line that is no longer true, linked to today |
